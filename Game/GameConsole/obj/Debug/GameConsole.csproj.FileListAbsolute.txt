@@ -1,0 +1,2 @@
+C:\Users\name\Desktop\Visual studio Задачи\Game\GameConsole\bin\Debug\GameConsole.exe.config
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\GameConsole.exe.config
