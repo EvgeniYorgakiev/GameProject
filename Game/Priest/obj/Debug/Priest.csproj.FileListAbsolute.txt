@@ -1,0 +1,7 @@
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Priest\bin\Debug\Priest.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Priest\bin\Debug\Priest.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Priest\bin\Debug\Heroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Priest\bin\Debug\Heroes.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Priest\obj\Debug\Priest.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Priest\obj\Debug\Priest.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Priest\obj\Debug\Priest.csprojResolveAssemblyReference.cache

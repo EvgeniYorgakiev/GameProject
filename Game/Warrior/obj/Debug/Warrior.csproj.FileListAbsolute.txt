@@ -1,0 +1,7 @@
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Warrior\bin\Debug\Warrior.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Warrior\bin\Debug\Warrior.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Warrior\bin\Debug\Heroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Warrior\bin\Debug\Heroes.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Warrior\obj\Debug\Warrior.csprojResolveAssemblyReference.cache
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Warrior\obj\Debug\Warrior.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Warrior\obj\Debug\Warrior.pdb

@@ -4,7 +4,7 @@ namespace Skeleton
 {
     public class Skeleton : Enemy.Enemy
     {
-        private static Ability shieldBash = new Ability(27, 8);
+        private static Ability shieldbashAbility = new Ability(27, 8);
 
         public Skeleton() : base()
         {
@@ -14,13 +14,14 @@ namespace Skeleton
             mana = 16;
             minDamage = 18;
             maxDamage = 23;
+            difficulty = 1.2f;
         }
 
-        public static int Charge()
+        public int shieldbash()
         {
             Random damageDealt = new Random();
-            mana -= shieldBash.mana;
-            return damageDealt.Next(shieldBash.damage - 2, shieldBash.damage + 2);
+            mana -= shieldbashAbility.mana;
+            return damageDealt.Next(shieldbashAbility.damage - 2, shieldbashAbility.damage + 2);
         }
     }
 }

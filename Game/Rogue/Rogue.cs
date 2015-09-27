@@ -4,13 +4,14 @@ namespace Rogue
 {
     public class Rogue : Heroes.Heroes
     {
-        private static Ability backstab = new Ability(25, 10);
-        private static Ability multiStrike = new Ability(25, 10);
-        private static Ability shoot = new Ability(23, 8);
-        private static Ability stealthKill = new Ability(35, 16);
+        private static Ability backstabAbility = new Ability(25, 10);
+        private static Ability multiStrikeAbility = new Ability(25, 10);
+        private static Ability shootAbility = new Ability(23, 8);
+        private static Ability stealthKillAbility = new Ability(35, 16);
 
         public Rogue() : base()
         {
+            name = "Rogue";
             maxHealth = 95;
             maxMana = 55;
             health = 95;
@@ -19,32 +20,32 @@ namespace Rogue
             maxDamage = 21;
         }
 
-        public static int Backstab()
+        public int backstab(Enemy.Enemy enemy)
         {
             Random damageDealt = new Random();
-            mana -= backstab.mana;
-            return damageDealt.Next(backstab.damage - 2, backstab.damage + 2);
+            mana -= backstabAbility.mana;
+            return damageDealt.Next(backstabAbility.damage - 2, backstabAbility.damage + 2);
         }
 
-        public static int MultiStrike()
+        public int multistrike(Enemy.Enemy enemy)
         {
             Random damageDealt = new Random();
-            mana -= multiStrike.mana;
-            return damageDealt.Next(multiStrike.damage - 8, multiStrike.damage + 8);
+            mana -= multiStrikeAbility.mana;
+            return damageDealt.Next(multiStrikeAbility.damage - 8, multiStrikeAbility.damage + 8);
         }
 
-        public static int Shoot()
+        public int shoot(Enemy.Enemy enemy)
         {
             Random damageDealt = new Random();
-            mana -= shoot.mana;
-            return damageDealt.Next(shoot.damage - 3, shoot.damage + 3);
+            mana -= shootAbility.mana;
+            return damageDealt.Next(shootAbility.damage - 3, shootAbility.damage + 3);
         }
 
-        public static int StealthKill()
+        public int stealthkill(Enemy.Enemy enemy)
         {
             Random damageDealt = new Random();
-            mana -= stealthKill.mana;
-            return damageDealt.Next(stealthKill.damage - 5, stealthKill.damage + 10);
+            mana -= stealthKillAbility.mana;
+            return damageDealt.Next(stealthKillAbility.damage - 5, stealthKillAbility.damage + 10);
         }
     }
 }

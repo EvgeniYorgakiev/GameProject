@@ -4,10 +4,10 @@ namespace Priest
 {
     public class Priest : Heroes.Heroes
     {
-        private static Ability heal = new Ability(15, 12);
-        private static Ability rejuvanate = new Ability(16, 11);
-        private static Ability regenarate = new Ability(15, 18);
-        private static Ability revive = new Ability(0, 30);
+        private static Ability healAbility = new Ability(15, 12);
+        private static Ability rejuvanateAbility = new Ability(16, 11);
+        private static Ability regenarateAbility = new Ability(15, 18);
+        private static Ability reviveAbility = new Ability(0, 30);
 
         public Priest() : base()
         {
@@ -19,31 +19,31 @@ namespace Priest
             maxDamage = 16;
         }
 
-        public static int Heal()
+        public int heal()
         {
             Random damageDealt = new Random();
-            mana -= heal.mana;
-            return damageDealt.Next(heal.damage - 2, heal.damage + 2);
+            mana -= healAbility.mana;
+            return damageDealt.Next(healAbility.damage - 2, healAbility.damage + 2);
         }
 
-        public static int Rejuvanate()
+        public int rejuvanate()
         {
             Random damageDealt = new Random();
-            mana -= rejuvanate.mana;
-            return damageDealt.Next(rejuvanate.damage, rejuvanate.damage);
+            mana -= rejuvanateAbility.mana;
+            return damageDealt.Next(rejuvanateAbility.damage, rejuvanateAbility.damage);
         }
 
-        public static int Regenerate()
+        public int regenerate()
         {
             Random damageDealt = new Random();
-            mana -= regenarate.mana;
-            return damageDealt.Next(regenarate.damage - 8, regenarate.damage + 8);
+            mana -= regenarateAbility.mana;
+            return damageDealt.Next(regenarateAbility.damage - 8, regenarateAbility.damage + 8);
         }
 
-        public static void Revive(Heroes.Heroes hero)
+        public void revive(Heroes.Heroes hero)
         {
-            hero.SetHealth(40);
-            hero.SetMana(20);
+            hero.health = 40;
+            hero.mana = 20;
         }
     }
 }

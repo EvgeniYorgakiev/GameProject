@@ -1,0 +1,7 @@
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Boar\bin\Debug\Boar.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Boar\bin\Debug\Boar.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Boar\bin\Debug\Enemy.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Boar\bin\Debug\Enemy.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Boar\obj\Debug\Boar.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Boar\obj\Debug\Boar.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Boar\obj\Debug\Boar.csprojResolveAssemblyReference.cache

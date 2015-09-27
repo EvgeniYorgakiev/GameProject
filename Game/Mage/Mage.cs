@@ -4,10 +4,10 @@ namespace Mage
 {
     public class Mage : Heroes.Heroes
     {
-        private static Ability fireBall = new Ability(28, 12);
-        private static Ability iceBlast = new Ability(28, 11);
-        private static Ability shock = new Ability(28, 13);
-        private static Ability iceLance = new Ability(40, 18);
+        private static Ability fireBallAbility = new Ability(28, 12);
+        private static Ability iceBlastAbility = new Ability(28, 11);
+        private static Ability shockAbility = new Ability(28, 13);
+        private static Ability iceLanceAbility = new Ability(40, 18);
 
         public Mage() : base()
         {
@@ -19,32 +19,32 @@ namespace Mage
             maxDamage = 19;
         }
 
-        public static int FireBall()
+        public int fireball(Enemy.Enemy enemy)
         {
             Random damageDealt = new Random();
-            mana -= fireBall.mana;
-            return damageDealt.Next(fireBall.damage - 2, fireBall.damage + 2);
+            mana -= fireBallAbility.mana;
+            return damageDealt.Next(fireBallAbility.damage - 2, fireBallAbility.damage + 2);
         }
 
-        public static int IceBlast()
+        public int iceblast(Enemy.Enemy enemy)
         {
             Random damageDealt = new Random();
-            mana -= iceBlast.mana;
-            return damageDealt.Next(iceBlast.damage, iceBlast.damage);
+            mana -= iceBlastAbility.mana;
+            return damageDealt.Next(iceBlastAbility.damage, iceBlastAbility.damage);
         }
 
-        public static int Shock()
+        public int shock(Enemy.Enemy enemy)
         {
             Random damageDealt = new Random();
-            mana -= shock.mana;
-            return damageDealt.Next(shock.damage - 8, shock.damage + 8);
+            mana -= shockAbility.mana;
+            return damageDealt.Next(shockAbility.damage - 8, shockAbility.damage + 8);
         }
 
-        public static int IceLance()
+        public int icelance(Enemy.Enemy enemy)
         {
             Random damageDealt = new Random();
-            mana -= iceLance.mana;
-            return damageDealt.Next(iceLance.damage - 5, iceLance.damage + 10);
+            mana -= iceLanceAbility.mana;
+            return damageDealt.Next(iceLanceAbility.damage - 5, iceLanceAbility.damage + 10);
         }
     }
 }

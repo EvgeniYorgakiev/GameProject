@@ -1,2 +1,9 @@
 C:\Users\name\Desktop\Visual studio Задачи\Game\GameConsole\bin\Debug\GameConsole.exe.config
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\GameConsole.exe.config
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\GameConsole.exe
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\GameConsole.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Commands.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Commands.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\obj\Debug\GameConsole.csprojResolveAssemblyReference.cache
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\obj\Debug\GameConsole.exe
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\obj\Debug\GameConsole.pdb

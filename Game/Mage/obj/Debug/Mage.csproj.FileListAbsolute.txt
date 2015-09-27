@@ -1,0 +1,7 @@
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Mage\bin\Debug\Mage.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Mage\bin\Debug\Mage.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Mage\bin\Debug\Heroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Mage\bin\Debug\Heroes.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Mage\obj\Debug\Mage.csprojResolveAssemblyReference.cache
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Mage\obj\Debug\Mage.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Mage\obj\Debug\Mage.pdb

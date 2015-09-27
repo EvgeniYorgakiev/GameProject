@@ -4,10 +4,10 @@ namespace Warrior
 {
     public class Warrior : Heroes.Heroes
     {
-        private static Ability shieldBash = new Ability(30, 8);
-        private static Ability assault = new Ability(35, 10);
-        private static Ability overpower = new Ability(30, 9);
-        private static Ability execute = new Ability(35, 6);
+        private static Ability shieldBashAbility = new Ability(30, 8);
+        private static Ability assaultAbility = new Ability(35, 10);
+        private static Ability overpowerAbility = new Ability(30, 9);
+        private static Ability executeAbility = new Ability(35, 6);
 
         public Warrior() : base()
         {
@@ -19,32 +19,32 @@ namespace Warrior
             maxDamage = 23;
         }
 
-        public static int ShieldBash()
+        public int shieldbash(Enemy.Enemy enemy)
         {
             Random damageDealt = new Random();
-            mana -= shieldBash.mana;
-            return damageDealt.Next(shieldBash.damage - 2, shieldBash.damage + 2);
+            mana -= shieldBashAbility.mana;
+            return damageDealt.Next(shieldBashAbility.damage - 2, shieldBashAbility.damage + 2);
         }
 
-        public static int Assault()
+        public int assault(Enemy.Enemy enemy)
         {
             Random damageDealt = new Random();
-            mana -= assault.mana;
-            return damageDealt.Next(assault.damage - 8, assault.damage + 8);
+            mana -= assaultAbility.mana;
+            return damageDealt.Next(assaultAbility.damage - 8, assaultAbility.damage + 8);
         }
 
-        public static int Overpower()
+        public int overpower(Enemy.Enemy enemy)
         {
             Random damageDealt = new Random();
-            mana -= overpower.mana;
-            return damageDealt.Next(overpower.damage - 3, overpower.damage + 3);
+            mana -= overpowerAbility.mana;
+            return damageDealt.Next(overpowerAbility.damage - 3, overpowerAbility.damage + 3);
         }
 
-        public static int Execute()
+        public int execute(Enemy.Enemy enemy)
         {
             Random damageDealt = new Random();
-            mana -= execute.mana;
-            return damageDealt.Next(execute.damage - 5, execute.damage + 10);
+            mana -= executeAbility.mana;
+            return damageDealt.Next(executeAbility.damage - 5, executeAbility.damage + 10);
         }
     }
 }

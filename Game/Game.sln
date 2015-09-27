@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameConsole", "GameConsole\GameConsole.csproj", "{9E1CC24A-FF64-4B25-9A40-AC971BABB380}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands", "Commands\Commands.csproj", "{EF88F682-065B-4FBD-8BF2-9BBB086B5402}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heroes", "Heroes\Heroes.csproj", "{81D6A650-20F7-42A8-8C8B-594C9DF81D11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rogue", "Rogue\Rogue.csproj", "{1F0E1E36-8F1F-46C8-9C0A-702C7FC210AB}"
@@ -23,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boar", "Boar\Boar.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skeleton", "Skeleton\Skeleton.csproj", "{0273F640-BD29-4709-8333-C5C9D3BEE78C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{C208D68D-9170-43C0-9E42-C7C09132776C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,10 +33,6 @@ Global
 		{9E1CC24A-FF64-4B25-9A40-AC971BABB380}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E1CC24A-FF64-4B25-9A40-AC971BABB380}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E1CC24A-FF64-4B25-9A40-AC971BABB380}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EF88F682-065B-4FBD-8BF2-9BBB086B5402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF88F682-065B-4FBD-8BF2-9BBB086B5402}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF88F682-065B-4FBD-8BF2-9BBB086B5402}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF88F682-065B-4FBD-8BF2-9BBB086B5402}.Release|Any CPU.Build.0 = Release|Any CPU
 		{81D6A650-20F7-42A8-8C8B-594C9DF81D11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{81D6A650-20F7-42A8-8C8B-594C9DF81D11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81D6A650-20F7-42A8-8C8B-594C9DF81D11}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,6 +65,10 @@ Global
 		{0273F640-BD29-4709-8333-C5C9D3BEE78C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0273F640-BD29-4709-8333-C5C9D3BEE78C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0273F640-BD29-4709-8333-C5C9D3BEE78C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C208D68D-9170-43C0-9E42-C7C09132776C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C208D68D-9170-43C0-9E42-C7C09132776C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C208D68D-9170-43C0-9E42-C7C09132776C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C208D68D-9170-43C0-9E42-C7C09132776C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

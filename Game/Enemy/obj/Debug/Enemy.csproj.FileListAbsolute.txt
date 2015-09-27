@@ -1,0 +1,5 @@
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\bin\Debug\Enemy.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\bin\Debug\Enemy.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\obj\Debug\Enemy.csprojResolveAssemblyReference.cache
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\obj\Debug\Enemy.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\obj\Debug\Enemy.pdb

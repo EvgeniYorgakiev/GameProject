@@ -4,7 +4,7 @@ namespace Boar
 {
     public class Boar : Enemy.Enemy
     {
-        private static Ability charge = new Ability(25, 8);
+        private static Ability chargeAbility = new Ability(25, 8);
 
         public Boar() : base()
         {
@@ -14,13 +14,14 @@ namespace Boar
             mana = 16;
             minDamage = 18;
             maxDamage = 23;
+            difficulty = 1;
         }
 
-        public static int Charge()
+        public int charge()
         {
             Random damageDealt = new Random();
-            mana -= charge.mana;
-            return damageDealt.Next(charge.damage - 2, charge.damage + 2);
+            mana -= chargeAbility.mana;
+            return damageDealt.Next(chargeAbility.damage - 2, chargeAbility.damage + 2);
         }
     }
 }

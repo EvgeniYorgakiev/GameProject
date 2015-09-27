@@ -16,25 +16,15 @@ namespace Heroes
             }
         }
 
-        public static string name;
-        public static int health;
-        public static int maxHealth;
-        public static int mana;
-        public static int maxMana;
-        public static int minDamage;
-        public static int maxDamage;
+        public string name;
+        public int health;
+        public int maxHealth;
+        public int mana;
+        public int maxMana;
+        public int minDamage;
+        public int maxDamage;
 
-        public void SetHealth(int newHealth)
-        {
-            health = newHealth;
-        }
-
-        public void SetMana(int newMana)
-        {
-            mana = newMana;
-        }
-
-        public static int Attack()
+        public int attack()
         {
             Random damageDealt = new Random();
             return damageDealt.Next(minDamage, maxDamage);
