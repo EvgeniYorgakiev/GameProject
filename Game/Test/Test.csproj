@@ -50,10 +50,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Boar\Boar.csproj">
-      <Project>{702e85c7-cccc-429c-9887-28b06c3fb138}</Project>
-      <Name>Boar</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Enemy\Enemy.csproj">
       <Project>{5cafee66-cd16-40ee-9628-b475b8ee844c}</Project>
       <Name>Enemy</Name>
@@ -61,6 +57,10 @@
     <ProjectReference Include="..\Heroes\Heroes.csproj">
       <Project>{81d6a650-20f7-42a8-8c8b-594c9df81d11}</Project>
       <Name>Heroes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IHeroes\IHeroes.csproj">
+      <Project>{de8349e6-7c52-488b-b631-570a67d50ee3}</Project>
+      <Name>IHeroes</Name>
     </ProjectReference>
     <ProjectReference Include="..\Mage\Mage.csproj">
       <Project>{d72306ad-04bd-4c72-afc7-53789a7287f8}</Project>
@@ -73,10 +73,6 @@
     <ProjectReference Include="..\Rogue\Rogue.csproj">
       <Project>{1f0e1e36-8f1f-46c8-9c0a-702c7fc210ab}</Project>
       <Name>Rogue</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Skeleton\Skeleton.csproj">
-      <Project>{0273f640-bd29-4709-8333-c5c9d3bee78c}</Project>
-      <Name>Skeleton</Name>
     </ProjectReference>
     <ProjectReference Include="..\Warrior\Warrior.csproj">
       <Project>{2ce9b7c5-5437-4f9a-8285-a195976c532e}</Project>

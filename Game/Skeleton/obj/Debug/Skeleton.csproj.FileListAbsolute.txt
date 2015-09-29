@@ -1,7 +1,0 @@
-C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Skeleton\bin\Debug\Skeleton.dll
-C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Skeleton\bin\Debug\Skeleton.pdb
-C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Skeleton\bin\Debug\Enemy.dll
-C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Skeleton\bin\Debug\Enemy.pdb
-C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Skeleton\obj\Debug\Skeleton.csprojResolveAssemblyReference.cache
-C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Skeleton\obj\Debug\Skeleton.dll
-C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Skeleton\obj\Debug\Skeleton.pdb

@@ -2,32 +2,14 @@
 
 namespace Heroes
 {
-    public class Heroes
+    public class Hero : IHeroes.IHero
     {
-        public struct Ability
-        {
-            public int damage;
-            public int mana;
-
-            public Ability(int damage, int mana)
-            {
-                this.damage = damage;
-                this.mana = mana;
-            }
-        }
-
-        public string name;
-        public int health;
-        public int maxHealth;
-        public int mana;
-        public int maxMana;
-        public int minDamage;
-        public int maxDamage;
-
-        public int attack()
+        public int attack(Enemy.EnemyClass enemy)
         {
             Random damageDealt = new Random();
-            return damageDealt.Next(minDamage, maxDamage);
+            int minDamageAfterArmor = minDamage * (100 - enemy.armor)/100;
+            int maxDamageAfterArmor = maxDamage * (100 - enemy.armor) / 100;
+            return damageDealt.Next(minDamageAfterArmor, maxDamageAfterArmor);
         }
     }
 }

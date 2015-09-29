@@ -20,3 +20,5 @@ C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Test\bin\Debug
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Test\obj\Debug\Test.exe
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Test\obj\Debug\Test.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Test\bin\Debug\IHeroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Test\bin\Debug\IHeroes.pdb

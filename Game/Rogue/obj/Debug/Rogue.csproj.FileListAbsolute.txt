@@ -5,3 +5,7 @@ C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Rogue\bin\Debu
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Rogue\obj\Debug\Rogue.csprojResolveAssemblyReference.cache
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Rogue\obj\Debug\Rogue.dll
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Rogue\obj\Debug\Rogue.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Rogue\bin\Debug\Enemy.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Rogue\bin\Debug\Enemy.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Rogue\bin\Debug\IHeroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Rogue\bin\Debug\IHeroes.pdb

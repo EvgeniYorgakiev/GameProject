@@ -1,0 +1,5 @@
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\IHeroes\bin\Debug\IHeroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\IHeroes\bin\Debug\IHeroes.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\IHeroes\obj\Debug\IHeroes.csprojResolveAssemblyReference.cache
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\IHeroes\obj\Debug\IHeroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\IHeroes\obj\Debug\IHeroes.pdb

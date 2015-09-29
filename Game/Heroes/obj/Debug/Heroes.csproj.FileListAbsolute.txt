@@ -3,3 +3,7 @@ C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\bin\Deb
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\obj\Debug\Heroes.dll
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\obj\Debug\Heroes.pdb
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\obj\Debug\Heroes.csprojResolveAssemblyReference.cache
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\bin\Debug\Enemy.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\bin\Debug\Enemy.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\bin\Debug\IHeroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\bin\Debug\IHeroes.pdb
