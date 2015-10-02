@@ -38,11 +38,11 @@ namespace Enemy
         }
     }
 
-    public class SkeletonClass : EnemyClass
+    public class Skeleton : EnemyClass
     {
         private static Ability shieldbashAbility = new Ability(27, 8);
 
-        public SkeletonClass() : base()
+        public Skeleton() : base()
         {
             maxHealth = 130;
             maxMana = 16;

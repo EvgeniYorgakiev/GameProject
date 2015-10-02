@@ -17,9 +17,9 @@ namespace Test
         internal static List<List<EnemyClass>> battles = new List<List<EnemyClass>>()
         {
             new List<EnemyClass> {new Boar() },
-            new List<EnemyClass> {new SkeletonClass() },
+            new List<EnemyClass> {new Skeleton() },
             new List<EnemyClass> {new Boar(), new Boar()},
-            new List<EnemyClass> {new SkeletonClass(), new SkeletonClass()},
+            new List<EnemyClass> {new Skeleton(), new Skeleton()},
         };
 
         internal static int maxLevel = 20;
@@ -51,6 +51,7 @@ namespace Test
                     bool noHeroesAlive = true;
                     for (int i = 0; i < heroesActedThisTurn.Length; i++)
                     {
+                        Console.WriteLine(heroes[i].health);
                         if(heroes[i].health > 0)
                         {
                             noHeroesAlive = false;
@@ -231,6 +232,7 @@ namespace Test
                     }
                 }
                 Test.heroesActedThisTurn[currentHeroIndex] = true;
+                Console.WriteLine(enemies[enemyIndex].health);
             }
             catch (Exception) // Every unregonised commands is basically a diffrent exception
             {

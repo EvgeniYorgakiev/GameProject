@@ -8,6 +8,7 @@ namespace Warrior
         private static Ability assaultAbility = new Ability(35, 10, 3);
         private static Ability overpowerAbility = new Ability(30, 9, 4);
         private static Ability executeAbility = new Ability(35, 6, 6);
+        private static Ability hearthStrikeAbility = new Ability(40, 9, 7);
 
         public WarriorClass() : base()
         {
@@ -67,6 +68,21 @@ namespace Warrior
             }
             int overpowerBashAbilityAfterArmor = overpowerAbility.damage * (100 - enemy.armor) / 100;
             return damageDealt.Next(overpowerBashAbilityAfterArmor - 3, overpowerBashAbilityAfterArmor+ 3);
+        }
+
+        public int execute(Enemy.EnemyClass enemy)
+        {
+            Random damageDealt = new Random();
+            if (level >= executeAbility.levelRequired)
+            {
+                mana -= executeAbility.mana;
+            }
+            else
+            {
+                mana -= 1000;
+            }
+            int executeAbilityAfterArmor = executeAbility.damage * (100 - enemy.armor) / 100;
+            return damageDealt.Next(executeAbilityAfterArmor - 5, executeAbilityAfterArmor + 10);
         }
 
         public int execute(Enemy.EnemyClass enemy)
