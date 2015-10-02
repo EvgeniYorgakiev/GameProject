@@ -327,11 +327,13 @@ Total number of battles: 5)
             if (hero.mana < 0 && hero.mana >= -100)
             {
                 Console.WriteLine("No mana for that ability");
+                hero.mana = currentMana;
                 return false;
             }
             else if(hero.mana < - 100)
             {
                 Console.WriteLine("Need a higher level to use that ability");
+                hero.mana = currentMana;
                 return false;
             }
             hero.mana = currentMana;

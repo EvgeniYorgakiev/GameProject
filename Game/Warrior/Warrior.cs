@@ -85,7 +85,7 @@ namespace Warrior
             return damageDealt.Next(executeAbilityAfterArmor - 5, executeAbilityAfterArmor + 10);
         }
 
-        public int execute(Enemy.EnemyClass enemy)
+        public int hearthstrike(Enemy.EnemyClass enemy)
         {
             Random damageDealt = new Random();
             if (level >= executeAbility.levelRequired)
@@ -96,8 +96,8 @@ namespace Warrior
             {
                 mana -= 1000;
             }
-            int executeAbilityAfterArmor = executeAbility.damage * (100 - enemy.armor) / 100;
-            return damageDealt.Next(executeAbilityAfterArmor - 5, executeAbilityAfterArmor + 10);
+            int hearthStrikeAbilityAfterArmor = hearthStrikeAbility.damage * (100 - enemy.armor) / 100;
+            return damageDealt.Next(hearthStrikeAbilityAfterArmor - 5, hearthStrikeAbilityAfterArmor + 10);
         }
     }
 }
