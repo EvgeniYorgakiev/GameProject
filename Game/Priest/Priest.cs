@@ -22,6 +22,10 @@ namespace Priest
             fireResistance = 0;
             iceResistance = 0;
             lightningResistance = 0;
+            maxHealthOnLevelUp = 4f;
+            maxManaOnLevelUp = 4f;
+            minDamageOnLevelUp = 1.1f;
+            maxDamageOnLevelUp = 1.1f;
         }
 
         public int heal()

@@ -18,8 +18,8 @@ namespace Test
         {
             new List<EnemyClass> {new Boar() },
             new List<EnemyClass> {new Skeleton() },
-            new List<EnemyClass> {new Boar(), new Boar()},
-            new List<EnemyClass> {new Skeleton(), new Skeleton()},
+            new List<EnemyClass> {new SkeletonMage(), new Boar()},
+            new List<EnemyClass> {new Skeleton(), new SkeletonMage()},
         };
 
         internal static int maxLevel = 20;
@@ -207,7 +207,7 @@ namespace Test
                     enemies[enemyIndex].health = (enemies[enemyIndex].health - (int)ability.Invoke(heroes[currentHeroIndex], new object[] { enemies[enemyIndex] } ));
                     if(enemies[enemyIndex].health < 0)
                     {
-                        enemies[enemyIndex].health = 0;
+                        enemies[enemyIndex].OnDeath();
                         AddExperience(heroes, enemies[enemyIndex].experienceWorth);
                     }
                 }
@@ -249,7 +249,7 @@ namespace Test
                     heroes[i].experience += experienceGained;
                     if (heroes[i].experience > Test.levels[heroes[i].level])
                     {
-                        heroes[i].level++;
+                        heroes[i].OnLevelUp();
                     }
                     if (heroes[i].level == Test.maxLevel)
                     {
@@ -315,7 +315,7 @@ Total number of battles: 5)
 
         private static bool HeroHasMana(Hero hero, MethodInfo ability, EnemyClass enemy = null)
         {
-            int currentMana = hero.mana; //Check if the hero has mana for the ability
+            int currentMana = (int) hero.mana; //Check if the hero has mana for the ability
             if(enemy == null)
             {
                 ability.Invoke(hero, null);

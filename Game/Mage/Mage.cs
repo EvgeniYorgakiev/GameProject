@@ -22,6 +22,10 @@ namespace Mage
             fireResistance = 15;
             iceResistance = 15;
             lightningResistance = 15;
+            maxHealthOnLevelUp = 3.5f;
+            maxManaOnLevelUp = 4.5f;
+            minDamageOnLevelUp = 1.2f;
+            maxDamageOnLevelUp = 1.2f;
         }
 
         public int fireball(Enemy.EnemyClass enemy)

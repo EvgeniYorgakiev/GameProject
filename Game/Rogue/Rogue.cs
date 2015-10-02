@@ -22,6 +22,10 @@ namespace Rogue
             fireResistance = 0;
             iceResistance = 0;
             lightningResistance = 0;
+            maxHealthOnLevelUp = 5f;
+            maxManaOnLevelUp = 3f;
+            minDamageOnLevelUp = 1.8f;
+            maxDamageOnLevelUp = 1.8f;
         }
 
         public int backstab(Enemy.EnemyClass enemy)

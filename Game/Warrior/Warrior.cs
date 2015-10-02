@@ -23,6 +23,10 @@ namespace Warrior
             fireResistance = 10;
             iceResistance = 10;
             lightningResistance = 10;
+            maxHealthOnLevelUp = 7f;
+            maxManaOnLevelUp = 2f;
+            minDamageOnLevelUp = 1.5f;
+            maxDamageOnLevelUp = 1.5f;
         }
 
         public int shieldbash(Enemy.EnemyClass enemy)
