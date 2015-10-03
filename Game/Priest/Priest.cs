@@ -80,8 +80,11 @@ namespace Priest
             {
                 mana -= 1000;
             }
-            hero.health = hero.maxHealth / 2;
-            hero.mana = hero.maxMana / 4;
+            if(hero != null)
+            {
+                hero.health = hero.maxHealth / 2;
+                hero.mana = hero.maxMana / 4;
+            }
         }
     }
 }

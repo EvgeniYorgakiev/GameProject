@@ -30,7 +30,13 @@ namespace Enemy
         public int iceResistance;
         public int lightningResistance;
         public int experienceWorth;
-        public List<ItemPool.Item> itemsOnDrop = new List<ItemPool.Item>(); 
+        public List<ItemPool.Item> itemsOnDrop = new List<ItemPool.Item>();
+        public static List<EnemyClass> listOfAllEnemies = new List<EnemyClass>()
+        {
+            new Boar(),
+            new Skeleton(),
+            new SkeletonMage()
+        };
 
         public int attack(IHero hero)
         {

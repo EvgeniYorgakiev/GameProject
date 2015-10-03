@@ -2,8 +2,10 @@
 using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
+using IHeroes;
 using Heroes;
 using Enemy;
+using System.Collections;
 
 namespace Test
 {
@@ -14,35 +16,30 @@ namespace Test
         internal static bool[] heroesActedThisTurn = new bool[4];
         internal static int battlesWon = 0;
 
-        internal static List<List<EnemyClass>> battles = new List<List<EnemyClass>>()
-        {
-            new List<EnemyClass> {new Boar() },
-            new List<EnemyClass> {new Skeleton() },
-            new List<EnemyClass> {new SkeletonMage(), new Boar()},
-            new List<EnemyClass> {new Skeleton(), new SkeletonMage()},
-        };
+        internal static List<List<EnemyClass>> battles = new List<List<EnemyClass>>();
 
         internal static int maxLevel = 20;
         internal static List<int> levels = new List<int>();
 
         static void Main()
         {
-            InitializeLevels();
-            Commands.ExecuteCommand("help", heroes, enemies);
-            Commands.ExecuteCommand("start", heroes, enemies);
-            InitializeEnemies();
+            Console.SetWindowSize((int) (Console.LargestWindowWidth * 0.8), (int)(Console.LargestWindowHeight * 0.8));
+            InitializeLevels(); 
+            Commands.ExecuteCommand("help", heroes, enemies); //Start with the help command by default
+            Commands.ExecuteCommand("start", heroes, enemies); //Start with the start command by default
+            InitializeBattles();
             do
             {
                 Console.Write("Enter a command:");
                 string command = Console.ReadLine();
-                Commands.ExecuteCommand(command, heroes, enemies);
+                Commands.ExecuteCommand(command, heroes, enemies); //Try to execute the command
                 if (NoEnemiesAlive())
                 {
                     battlesWon++;
                     InitializeEnemies();
                     for (int i = 0; i < heroesActedThisTurn.Length; i++)
                     {
-                        heroesActedThisTurn[i] = false;
+                        heroesActedThisTurn[i] = false; // Once all enemies are dead we start a new turn in which the heroes have not acted
                     }
                 }
                 if (AllHeroesHaveActed())
@@ -52,11 +49,11 @@ namespace Test
                     for (int i = 0; i < heroesActedThisTurn.Length; i++)
                     {
                         Console.WriteLine(heroes[i].health);
-                        if(heroes[i].health > 0)
+                        if(heroes[i].health > 0) //Check if there is atleast 1 standing hero after the AI action
                         {
                             noHeroesAlive = false;
                         }
-                        heroesActedThisTurn[i] = false;
+                        heroesActedThisTurn[i] = false; // After the AI's turn a new turn, in which the heroes have not acted, has come
                     }
                     if(noHeroesAlive)
                     {
@@ -67,13 +64,27 @@ namespace Test
             while (true);
         }
 
+        private static void InitializeBattles()
+        {
+            Random random = new Random();
+            var allPossibleEnemies = EnemyClass.listOfAllEnemies;
+            battles = new List<List<EnemyClass>>() // We initialize the battles on random
+            {
+                new List<EnemyClass>() { allPossibleEnemies[random.Next(0, 3)] }, // We initialize a new enemy from all the possible enemies that have an index between 0 and 3 (exlusively)
+                new List<EnemyClass>() { allPossibleEnemies[random.Next(0, 3)], allPossibleEnemies[random.Next(0, 3)], },
+                new List<EnemyClass>() { allPossibleEnemies[random.Next(0, 3)], allPossibleEnemies[random.Next(0, 3)], allPossibleEnemies[random.Next(0, 3)], },
+                new List<EnemyClass>() { allPossibleEnemies[random.Next(0, 3)], allPossibleEnemies[random.Next(0, 3)], allPossibleEnemies[random.Next(0, 3)], allPossibleEnemies[random.Next(0, 3)], },
+            };
+            InitializeEnemies();
+        }
+
         private static void InitializeLevels()
         {
             int experienceRequired = 100;
             for (int i = 0; i < maxLevel; i++)
             {
                 levels.Add(experienceRequired);
-                experienceRequired += 100 + 2 * (i + 1);
+                experienceRequired += 100 + 2 * (i + 1); //The levels with this formula are: 100, 220, 260, 320 etc.
             }
         }
 
@@ -128,23 +139,25 @@ namespace Test
                 {
                     randomHeroIndex = random.Next(0, heroes.Length);
                 }
-                while (heroes[randomHeroIndex].health < 0);
-                var methodNames = enemies[i].GetType().GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly).Select(x => x.Name).Distinct().OrderBy(x => x);
-                List<MethodInfo> abilities = new List<MethodInfo>();
-                abilities.Add(enemies[i].GetType().GetMethod("attack"));
+                while (heroes[randomHeroIndex].health <= 0); //Keep choosing a new random hero if the random hero we are attacking is dead
+                var methodNames = enemies[i].GetType().GetMethods(BindingFlags.Public | BindingFlags.Instance | 
+                    BindingFlags.DeclaredOnly).Select(x => x.Name).Distinct().OrderBy(x => x); // We take all of the methods the current enemy has that have not been inherited remove duplicates and order them
+                List<MethodInfo> abilities = new List<MethodInfo>(); //The abilities the enemy has
+                abilities.Add(enemies[i].GetType().GetMethod("attack")); //All enemies have attack by default
                 foreach (var methodName in methodNames)
                 {
-                    abilities.Add(enemies[i].GetType().GetMethod(methodName.ToLower()));
+                    abilities.Add(enemies[i].GetType().GetMethod(methodName.ToLower())); //Add the method to the ability list
                     int currentMana = enemies[i].mana;
-                    abilities[abilities.Count - 1].Invoke(enemies[i], new object[] { heroes[randomHeroIndex] });
-                    if(enemies[i].mana < 0)
+                    abilities[abilities.Count - 1].Invoke(enemies[i], new object[] { heroes[randomHeroIndex] }); //Try to use the ability by also draining mana
+                    if(enemies[i].mana < 0) //If after the enemy has used the ability the current enemy has less than 0 mana then he doesn't have mana for that ability
                     {
-                        abilities.RemoveAt(abilities.Count - 1);
-                        enemies[i].mana = currentMana;
+                        abilities.RemoveAt(abilities.Count - 1); //We remove the ability from the list
                     }
+                    enemies[i].mana = currentMana;
                 }
-                int randomAbilityIndex = random.Next(0, abilities.Count);
-                heroes[randomHeroIndex].health = heroes[randomHeroIndex].health - (int)abilities[randomAbilityIndex].Invoke(enemies[i], new object[] { heroes[randomHeroIndex] });
+                int randomAbilityIndex = random.Next(0, abilities.Count); //Use a random ability from the list
+                heroes[randomHeroIndex].health = heroes[randomHeroIndex].health - //Reduce the hero's health with the damage from the ability
+                    (int)abilities[randomAbilityIndex].Invoke(enemies[i], new object[] { heroes[randomHeroIndex] }); //Invoke the ability which will return an int value of the damage it deals
             }
         }
     }
@@ -154,7 +167,7 @@ namespace Test
         public static void ExecuteCommand(string command, Hero[] heroes, List<EnemyClass> enemies)
         {
             string[] commandParts = command.Split(' ');
-            switch (commandParts[0].ToLower())
+            switch (commandParts[0].ToLower()) //Check if the first word of the command matches any of the basics
             {
                 case "start":
                     {
@@ -166,17 +179,69 @@ namespace Test
                         PrintHelp();
                         break;
                     }
+                case "inventory":
+                    {
+                        PrintInventory();
+                        break;
+                    }
                 default: // since the code for all heroes is the same we can just put it in default and let the try and catch pick up unregonised commands
                     {
-                        if(commandParts[1].Equals("info"))
+                        if(commandParts[1].Equals("info") && commandParts.Length == 2) //If the second part is info and the command has 2 parts
                         {
                             PrintInfo(commandParts[0]);
                             break;
                         }
-                        TryToUseAbility(heroes, enemies, commandParts);
+                        TryToUseAbility(heroes, enemies, commandParts); // Check if the command is an ability command and uses it
                         break;
                     }
             }
+        }
+
+        private static void PrintInventory()
+        {
+            foreach (var item in ItemPool.inventory)
+            {
+                PrintItem(item);
+            }
+        }
+
+        private static void PrintItem(ItemPool.Item item)
+        {
+            FieldInfo[] fields = item.GetType().GetFields(); // Gets all of fields of the current item
+            bool isFirstField = true;
+            foreach (var field in fields)
+            {
+                var type = field.GetValue(item).GetType();
+                if (type == typeof(ItemPool.ClassAbleToWearItem[])) //If the type of the current field is an array of classes able to wear an item we need to print them separately
+                {
+                    //Prints the classes able to wear the item
+                    Console.Write("For: ");
+                    object array = field.GetValue(item);
+                    IEnumerable enumerable = array as IEnumerable;
+                    if (enumerable != null)
+                    {
+                        foreach (object element in enumerable)
+                        {
+                            Console.Write("{0} ", element.ToString());
+                        }
+                    }
+                    Console.Write("| ");
+                }
+                else
+                {
+                    // Print item field info
+                    if(isFirstField)
+                    {
+                        Console.Write("| {0} | ", field.GetValue(item).ToString());
+                        isFirstField = false;
+                    }
+                    else if(field.GetValue(item).ToString() != "0")
+                    {
+                        Console.Write("{0}: {1} | ", field.Name, field.GetValue(item).ToString());
+                    }
+                }
+            }
+            Console.WriteLine();
         }
 
         private static void TryToUseAbility(Hero[] heroes, List<EnemyClass> enemies, string[] commandParts)
@@ -184,18 +249,18 @@ namespace Test
             try
             {
                 int currentHeroIndex = Test.GetHeroIndex(commandParts[0]); //Get the current hero index
-                if (Test.heroesActedThisTurn[currentHeroIndex])
+                if (Test.heroesActedThisTurn[currentHeroIndex]) // Check if the hero has acted this turn
                 {
                     Console.WriteLine("Hero has already acted this turn");
                     return;
                 }
-                if(commandParts[1].ToLower().Equals("skip"))
+                if(commandParts[1].ToLower().Equals("skip") && commandParts.Length == 2)
                 {
                     Test.heroesActedThisTurn[currentHeroIndex] = true;
                     return;
                 }
                 MethodInfo ability = heroes[currentHeroIndex].GetType().GetMethod(commandParts[1].ToLower(), 
-                                                                                  BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy ); //By passing a string of the name of the method we can get it as a variable
+                                     BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy ); //By passing a string of the name of the method we can get it as a variable
                 int enemyIndex;
                 if (int.TryParse(commandParts[2], out enemyIndex)) //Try to parse the third string as a number if it is a number we use an ability on an enemy
                 {
@@ -218,7 +283,7 @@ namespace Test
                     {
                         return;
                     }
-                    if (ability.Name.ToLower().Equals("revive"))
+                    if (ability.Name.ToLower().Equals("revive")) // We need to check if the ability is revive since it is a void function and is invoked in a diffrent way
                     {
                         ability.Invoke(heroes[currentHeroIndex], new object[] { heroes[heroTargetedIndex] });
                     }
@@ -231,10 +296,10 @@ namespace Test
                         }
                     }
                 }
-                Test.heroesActedThisTurn[currentHeroIndex] = true;
+                Test.heroesActedThisTurn[currentHeroIndex] = true; // If everything passed without an exception then the move was succesful and the current hero has acted
                 Console.WriteLine(enemies[enemyIndex].health);
             }
-            catch (Exception) // Every unregonised commands is basically a diffrent exception
+            catch (Exception) // Every unregonised commands is basically a different exception
             {
                 UnrecognizedCommand();
             }
@@ -242,12 +307,12 @@ namespace Test
 
         private static void AddExperience(Hero[] heroes, int experienceGained)
         {
-            for (int i = 0; i < heroes.Length; i++)
+            for (int i = 0; i < heroes.Length; i++) // Go through each hero and add the experience to all of them not just one
             {
-                if(heroes[i].experience < Test.levels[heroes[i].level - 1])
+                if(heroes[i].level <= Test.maxLevel) //If the hero's experience is less than the max level
                 {
                     heroes[i].experience += experienceGained;
-                    if (heroes[i].experience > Test.levels[heroes[i].level])
+                    if (heroes[i].experience > Test.levels[heroes[i].level]) // If the hero's experience is more than the current level required
                     {
                         heroes[i].OnLevelUp();
                     }
@@ -305,7 +370,38 @@ Total number of battles: 5)
 
         private static void PrintInfo(string character)
         {
-            throw new NotImplementedException();
+            int currentHeroIndex = Test.GetHeroIndex(character);
+            Type type = Test.heroes[currentHeroIndex].GetType(); // Get the class of the current hero
+            FieldInfo[] properties = type.GetFields(); // Get all of the fields of the current hero
+            Console.WriteLine();
+            foreach (FieldInfo property in properties)
+            {
+                Type propertyType = property.GetValue(Test.heroes[currentHeroIndex]).GetType();
+                if (propertyType == typeof(ItemPool.Item)) // If the current field is an item we need to print it diffrently
+                {
+                    var itemName = property.GetValue(Test.heroes[currentHeroIndex]).ToString();
+                    foreach (var item in ItemPool.itemsPool)
+                    {
+                        if(itemName == item.name)
+                        {
+                            PrintItem(item);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("\t{0}: {1}", property.Name, property.GetValue(Test.heroes[currentHeroIndex]).ToString());
+                }
+            }
+            var methodNames = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly).Select(x => x.Name).Distinct().OrderBy(x => x);
+            Console.WriteLine("\tAbilities: ");
+            Console.WriteLine("\t\tattack");
+            foreach (var methodName in methodNames)
+            {
+                Console.WriteLine("\t\t{0}", methodName);
+            }
+            Console.WriteLine();
         }
 
         private static void UnrecognizedCommand()
@@ -316,7 +412,7 @@ Total number of battles: 5)
         private static bool HeroHasMana(Hero hero, MethodInfo ability, EnemyClass enemy = null)
         {
             int currentMana = (int) hero.mana; //Check if the hero has mana for the ability
-            if(enemy == null)
+            if(enemy == null) //If there is no enemy the ability is a void
             {
                 ability.Invoke(hero, null);
             }
@@ -324,13 +420,13 @@ Total number of battles: 5)
             {
                 ability.Invoke(hero, new object[] { enemy });
             }
-            if (hero.mana < 0 && hero.mana >= -100)
+            if (hero.mana < 0 && hero.mana >= -100) // If after being invoked the hero's mana is between 0 and -100 he doesn't have the mana for the ability
             {
                 Console.WriteLine("No mana for that ability");
                 hero.mana = currentMana;
                 return false;
             }
-            else if(hero.mana < - 100)
+            else if(hero.mana < - 100)// If after being invoked the hero's level is not enough for the ability he loses 1000 mana temporarily
             {
                 Console.WriteLine("Need a higher level to use that ability");
                 hero.mana = currentMana;
