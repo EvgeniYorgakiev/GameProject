@@ -4,10 +4,10 @@ namespace Priest
 {
     public class PriestClass : Heroes.Hero
     {
-        private static Ability healAbility = new Ability(15, 12,1);
-        private static Ability rejuvanateAbility = new Ability(16, 11,3);
-        private static Ability regenarateAbility = new Ability(15, 18,4);
-        private static Ability reviveAbility = new Ability(0, 30,6);
+        public static Ability Heal = new Ability(15, 12,1);
+        public static Ability Rejuvanate = new Ability(16, 11,3);
+        public static Ability Regenaration = new Ability(15, 18,4);
+        public static Ability Revive = new Ability(0, 30,6);
 
         public PriestClass() : base()
         {
@@ -16,12 +16,12 @@ namespace Priest
             maxMana = 80;
             health = 70;
             mana = 80;
-            minDamage = 11;
-            maxDamage = 16;
-            armor = 0;
-            fireResistance = 0;
-            iceResistance = 0;
-            lightningResistance = 0;
+            baseMinDamage = 11;
+            baseMaxDamage = 16;
+            baseArmor = 0;
+            baseFireResistance = 0;
+            baseIceResistance = 0;
+            baseLightningResistance = 0;
             maxHealthOnLevelUp = 4f;
             maxManaOnLevelUp = 4f;
             minDamageOnLevelUp = 1.1f;
@@ -31,50 +31,49 @@ namespace Priest
         public int heal()
         {
             Random damageDealt = new Random();
-            if (level >= healAbility.levelRequired)
+            if (level >= Heal.levelRequired)
             {
-                mana -= healAbility.mana;
+                mana -= Heal.mana;
             }
             else
             {
                 mana -= 1000;
             }
-            return damageDealt.Next(healAbility.damage - 2, healAbility.damage + 2);
+            return damageDealt.Next(Heal.averageDamage - 2, Heal.averageDamage + 2);
         }
 
         public int rejuvanate()
         {
-            Random damageDealt = new Random();
-            if (level >= rejuvanateAbility.levelRequired)
+            if (level >= Rejuvanate.levelRequired)
             {
-                mana -= rejuvanateAbility.mana;
+                mana -= Rejuvanate.mana;
             }
             else
             {
                 mana -= 1000;
             }
-            return damageDealt.Next(rejuvanateAbility.damage, rejuvanateAbility.damage);
+            return Rejuvanate.averageDamage;
         }
 
         public int regenerate()
         {
             Random damageDealt = new Random();
-            if (level >= regenarateAbility.levelRequired)
+            if (level >= Regenaration.levelRequired)
             {
-                mana -= regenarateAbility.mana;
+                mana -= Regenaration.mana;
             }
             else
             {
                 mana -= 1000;
             }
-            return damageDealt.Next(regenarateAbility.damage - 8, regenarateAbility.damage + 8);
+            return damageDealt.Next(Regenaration.averageDamage - 8, Regenaration.averageDamage + 8);
         }
 
         public void revive(Heroes.Hero hero)
         {
-            if (level >= reviveAbility.levelRequired)
+            if (level >= Revive.levelRequired)
             {
-                mana -= reviveAbility.mana;
+                mana -= Revive.mana;
             }
             else
             {

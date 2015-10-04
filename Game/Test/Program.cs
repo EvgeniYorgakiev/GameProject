@@ -6,6 +6,7 @@ using IHeroes;
 using Heroes;
 using Enemy;
 using System.Collections;
+using System.Text.RegularExpressions;
 
 namespace Test
 {
@@ -15,6 +16,7 @@ namespace Test
         internal static List<EnemyClass> enemies = new List<EnemyClass>();
         internal static bool[] heroesActedThisTurn = new bool[4];
         internal static int battlesWon = 0;
+        internal static Dictionary<string, int> vanquishedEnemies = new Dictionary<string, int>();
 
         internal static List<List<EnemyClass>> battles = new List<List<EnemyClass>>();
 
@@ -90,7 +92,14 @@ namespace Test
 
         private static void InitializeEnemies()
         {
-            enemies = battles[battlesWon];
+            if(battlesWon == battles.Count)
+            {
+                Console.WriteLine("YOU WIN!!!!!!");
+            }
+            else
+            {
+                enemies = battles[battlesWon];
+            }
         }
 
         public static int GetHeroIndex(string name)
@@ -184,64 +193,147 @@ namespace Test
                         PrintInventory();
                         break;
                     }
+                case "classes":
+                    {
+                        for (int i = 0; i < heroes.Length; i++)
+                        {
+                            PrintInfo(heroes[i].name.ToLower());
+                        }
+                        break;
+                    }
+                case "status":
+                    {
+                        PrintStatus(Test.vanquishedEnemies);
+                        break;
+                    }
                 default: // since the code for all heroes is the same we can just put it in default and let the try and catch pick up unregonised commands
                     {
                         if(commandParts[1].Equals("info") && commandParts.Length == 2) //If the second part is info and the command has 2 parts
                         {
                             PrintInfo(commandParts[0]);
-                            break;
                         }
-                        TryToUseAbility(heroes, enemies, commandParts); // Check if the command is an ability command and uses it
+                        else if(commandParts[1].Equals("equip"))
+                        {
+                            EquipItem(heroes, commandParts); // Check if the command is an ability command and uses it
+                        }
+                        else if (commandParts[1].Equals("unequip"))
+                        {
+                            UnEquipItem(heroes, commandParts); // Check if the command is an ability command and uses it
+                        }
+                        else
+                        {
+                            TryToUseAbility(heroes, enemies, commandParts); // Check if the command is an ability command and uses it
+                        }
                         break;
                     }
             }
         }
 
-        private static void PrintInventory()
+        private static void EquipItem(Hero[] heroes, string[] commandParts)
         {
-            foreach (var item in ItemPool.inventory)
+            try
             {
-                PrintItem(item);
+                int currentHeroIndex = Test.GetHeroIndex(commandParts[0]); //Get the current hero index
+                string itemName = "";
+                for (int i = 2; i < commandParts.Length; i++) // Since the item name may contain more than 1 word we need to join all the words and make a name of them
+                {
+                    if(i == commandParts.Length - 1)
+                    {
+                        itemName += commandParts[i];
+                    }
+                    else
+                    {
+                        itemName += commandParts[i] + " ";
+                    }
+                }
+                foreach (var item in ItemPool.inventory) // Go through the whole inventory to look for the item
+                {
+                    if (item.name.ToLower().Equals(itemName.ToLower()))
+                    {
+                        FieldInfo[] fields = heroes[currentHeroIndex].GetType().GetFields(); // Gets all of fields of the current hero
+                        foreach (var field in fields)
+                        {
+                            var type = field.GetValue(heroes[currentHeroIndex]).GetType();
+                            if(type == typeof(ItemPool.Item)) // We need only the fields that are with a type of item
+                            {
+                                string slotName = Regex.Match(field.Name, @"^.*?(?=[A-Z])").Value; //Match the part of the field name that is before a CapitalLetter
+                                if(slotName.ToLower().Equals(item.slot.ToString().ToLower()))
+                                {
+                                    foreach (var classAbleToWearItem in item.classesAbleToWearItem) // Go through all the classes able to wear the item
+                                    {
+                                        string className = Regex.Match(heroes[currentHeroIndex].GetType().Name, @"^[A-Za-z](.*?(?=[A-Z]))").Value; //Match the part of the class name that is before a CapitalLetter and Starts with a capital letter
+                                        if (classAbleToWearItem.ToString().ToLower().Equals(className.ToLower())) //Check if the current class being checked is equal to the hero class name
+                                        {
+                                            field.SetValue(heroes[currentHeroIndex], item);
+                                            Console.Write("Item has been equipped: ");
+                                            PrintItem(item);
+                                            ItemPool.inventory.Remove(item);
+                                            return;
+                                        }
+                                    }
+                                    Console.WriteLine("Hero cannot equip item");
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                }
+                Console.WriteLine("Item not present in inventory");
+            }
+            catch (Exception) // Every unregonised commands is basically a different exception
+            {
+                UnrecognizedCommand();
             }
         }
 
-        private static void PrintItem(ItemPool.Item item)
+        private static void UnEquipItem(Hero[] heroes, string[] commandParts)
         {
-            FieldInfo[] fields = item.GetType().GetFields(); // Gets all of fields of the current item
-            bool isFirstField = true;
-            foreach (var field in fields)
+            try
             {
-                var type = field.GetValue(item).GetType();
-                if (type == typeof(ItemPool.ClassAbleToWearItem[])) //If the type of the current field is an array of classes able to wear an item we need to print them separately
+                int currentHeroIndex = Test.GetHeroIndex(commandParts[0]); //Get the current hero index
+                string itemName = "";
+                for (int i = 2; i < commandParts.Length; i++) // Since the item name may contain more than 1 word we need to join all the words and make a name of them
                 {
-                    //Prints the classes able to wear the item
-                    Console.Write("For: ");
-                    object array = field.GetValue(item);
-                    IEnumerable enumerable = array as IEnumerable;
-                    if (enumerable != null)
+                    if (i == commandParts.Length - 1)
                     {
-                        foreach (object element in enumerable)
+                        itemName += commandParts[i];
+                    }
+                    else
+                    {
+                        itemName += commandParts[i] + " ";
+                    }
+                }
+                FieldInfo[] fields = heroes[currentHeroIndex].GetType().GetFields(); // Gets all of fields of the current hero
+                foreach (var field in fields)
+                {
+                    var type = field.GetValue(heroes[currentHeroIndex]).GetType();
+                    if (type == typeof(ItemPool.Item)) // We need only the fields that are with a type of item
+                    {
+                        FieldInfo[] itemFields = type.GetFields(); // Gets all of fields of the current item slot
+                        foreach (var itemField in itemFields)
                         {
-                            Console.Write("{0} ", element.ToString());
+                            if(itemField.GetValue(field.GetValue(heroes[currentHeroIndex])) == null)
+                            {
+                                break;
+                            }
+                            if (itemField.GetValue(field.GetValue(heroes[currentHeroIndex])).ToString().ToLower().Equals(itemName.ToLower()))
+                            {
+                                Console.Write("Item has been unequipped: ");
+                                PrintItem((ItemPool.Item)field.GetValue(heroes[currentHeroIndex]));
+                                ItemPool.inventory.Add((ItemPool.Item) field.GetValue(heroes[currentHeroIndex]));
+                                field.SetValue(heroes[currentHeroIndex], new ItemPool.Item());
+                                return;
+                            }
+                            break;
                         }
                     }
-                    Console.Write("| ");
                 }
-                else
-                {
-                    // Print item field info
-                    if(isFirstField)
-                    {
-                        Console.Write("| {0} | ", field.GetValue(item).ToString());
-                        isFirstField = false;
-                    }
-                    else if(field.GetValue(item).ToString() != "0")
-                    {
-                        Console.Write("{0}: {1} | ", field.Name, field.GetValue(item).ToString());
-                    }
-                }
+                Console.WriteLine("Item not equipped on hero");
             }
-            Console.WriteLine();
+            catch (Exception) // Every unregonised commands is basically a different exception
+            {
+                UnrecognizedCommand();
+            }
         }
 
         private static void TryToUseAbility(Hero[] heroes, List<EnemyClass> enemies, string[] commandParts)
@@ -272,6 +364,14 @@ namespace Test
                     enemies[enemyIndex].health = (enemies[enemyIndex].health - (int)ability.Invoke(heroes[currentHeroIndex], new object[] { enemies[enemyIndex] } ));
                     if(enemies[enemyIndex].health < 0)
                     {
+                        if(Test.vanquishedEnemies.ContainsKey(enemies[enemyIndex].GetType().Name))
+                        {
+                            Test.vanquishedEnemies[enemies[enemyIndex].GetType().Name]++;
+                        }
+                        else
+                        {
+                            Test.vanquishedEnemies.Add(enemies[enemyIndex].GetType().Name, 1);
+                        }
                         enemies[enemyIndex].OnDeath();
                         AddExperience(heroes, enemies[enemyIndex].experienceWorth);
                     }
@@ -303,6 +403,33 @@ namespace Test
             {
                 UnrecognizedCommand();
             }
+        }
+
+        private static bool HeroHasMana(Hero hero, MethodInfo ability, EnemyClass enemy = null)
+        {
+            int currentMana = (int)hero.mana; //Check if the hero has mana for the ability
+            if (enemy == null) //If there is no enemy the ability is a void
+            {
+                ability.Invoke(hero, null);
+            }
+            else
+            {
+                ability.Invoke(hero, new object[] { enemy });
+            }
+            if (hero.mana < 0 && hero.mana >= -100) // If after being invoked the hero's mana is between 0 and -100 he doesn't have the mana for the ability
+            {
+                Console.WriteLine("No mana for that ability");
+                hero.mana = currentMana;
+                return false;
+            }
+            else if (hero.mana < -100)// If after being invoked the hero's level is not enough for the ability he loses 1000 mana temporarily
+            {
+                Console.WriteLine("Need a higher level to use that ability");
+                hero.mana = currentMana;
+                return false;
+            }
+            hero.mana = currentMana;
+            return true;
         }
 
         private static void AddExperience(Hero[] heroes, int experienceGained)
@@ -359,81 +486,152 @@ Would use the Warrior's ability shieldbash on the first enemy from left to right
 Priest heal warrior
 Would use the Priest's ability heal on the warrior)
 - ClassName skip (Skips the turn of that class)
+- Inventory (shows a list of all of the items in the inventory)
+- ClassName equip ItemName (equips the item with that name on the hero and replaces any items on that slot so long as it is in the inventory)
+- ClassName unequip ItemName (unequips the item with that name from the hero)
 - Status (gives you the number of vanquished enemies ,their names and battles fought e.g:
 Boars: 2 
 Skeletons: 3 
-BigBadBoss1: killed
+BigBadBoss1: 1
 Total number of random enemies vanquished 5
 Total number of battles: 5)
 ");
+        }
+
+        private static void PrintStatus(Dictionary<string, int> vanquishedEnemies)
+        {
+            foreach (var vanquishedEnemy in vanquishedEnemies)
+            {
+                Console.WriteLine("{0}: {1}", vanquishedEnemy.Key, vanquishedEnemy.Value);
+            }
+        }
+
+        private static void PrintInventory()
+        {
+            if(ItemPool.inventory.Count > 0)
+            {
+                foreach (var item in ItemPool.inventory)
+                {
+                    PrintItem(item);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Inventory is empty.");
+            }
+        }
+
+        private static void PrintItem(ItemPool.Item item)
+        {
+            FieldInfo[] fields = item.GetType().GetFields(); // Gets all of fields of the current item
+            bool isFirstField = true;
+            foreach (var field in fields)
+            {
+                if (field.GetValue(item) == null)
+                {
+                    Console.WriteLine("empty");
+                    return;
+                }
+                var type = field.GetValue(item).GetType();
+                if (type == typeof(ItemPool.ClassAbleToWearItem[])) //If the type of the current field is an array of classes able to wear an item we need to print them separately
+                {
+                    //Prints the classes able to wear the item
+                    Console.Write("For: ");
+                    object array = field.GetValue(item);
+                    IEnumerable enumerable = array as IEnumerable;
+                    if (enumerable != null)
+                    {
+                        foreach (object element in enumerable)
+                        {
+                            Console.Write("{0} ", element.ToString());
+                        }
+                    }
+                    Console.Write("| ");
+                }
+                else
+                {
+                    // Print item field info
+                    if (isFirstField)
+                    {
+                        Console.Write("| {0} | ", field.GetValue(item).ToString());
+                        isFirstField = false;
+                    }
+                    else if (field.GetValue(item).ToString() != "0")
+                    {
+                        Console.Write("{0}: {1} | ", field.Name, field.GetValue(item).ToString());
+                    }
+                }
+            }
+            Console.WriteLine();
         }
 
         private static void PrintInfo(string character)
         {
             int currentHeroIndex = Test.GetHeroIndex(character);
             Type type = Test.heroes[currentHeroIndex].GetType(); // Get the class of the current hero
-            FieldInfo[] properties = type.GetFields(); // Get all of the fields of the current hero
+            FieldInfo[] properties = type.GetFields(BindingFlags.Public | BindingFlags.Instance); // Get all of the fields of the current hero
             Console.WriteLine();
             foreach (FieldInfo property in properties)
             {
                 Type propertyType = property.GetValue(Test.heroes[currentHeroIndex]).GetType();
                 if (propertyType == typeof(ItemPool.Item)) // If the current field is an item we need to print it diffrently
                 {
-                    var itemName = property.GetValue(Test.heroes[currentHeroIndex]).ToString();
-                    foreach (var item in ItemPool.itemsPool)
-                    {
-                        if(itemName == item.name)
-                        {
-                            PrintItem(item);
-                            break;
-                        }
-                    }
+                    ItemPool.Item item = FindItem(property.GetValue(Test.heroes[currentHeroIndex]), propertyType);
+                    Console.Write("\t{0}: ", property.Name);
+                    PrintItem(item);
                 }
                 else
                 {
                     Console.WriteLine("\t{0}: {1}", property.Name, property.GetValue(Test.heroes[currentHeroIndex]).ToString());
                 }
             }
-            var methodNames = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly).Select(x => x.Name).Distinct().OrderBy(x => x);
-            Console.WriteLine("\tAbilities: ");
-            Console.WriteLine("\t\tattack");
-            foreach (var methodName in methodNames)
+            var abilities = type.GetFields(BindingFlags.Public | BindingFlags.Static);
+            Console.WriteLine("\tAbilities:");
+            foreach (var ability in abilities)
             {
-                Console.WriteLine("\t\t{0}", methodName);
+                Type abilityType = ability.GetValue(abilities).GetType();
+                var abilityInfos = abilityType.GetFields();
+                Console.Write("\t\t|{0} | ", ability.Name);
+                foreach (var abilityInfo in abilityInfos)
+                {
+                    Console.Write("{0}: {1} | ", abilityInfo.Name, abilityInfo.GetValue(ability.GetValue(abilities)).ToString());
+                }
+                Console.WriteLine();
             }
+            //var abilities = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly).Select(x => x.Name).Distinct().OrderBy(x => x);
+            //Console.WriteLine("\tAbilities: ");
+            //Console.WriteLine("\t\tattack");
+            //foreach (var methodName in abilities)
+            //{
+            //    Console.WriteLine("\t\t{0}", methodName);
+            //}
             Console.WriteLine();
+        }
+
+        private static ItemPool.Item FindItem(object property, Type propertyType)
+        {
+            FieldInfo[] itemProperties = propertyType.GetFields();
+            foreach (var item in ItemPool.itemsPool) //Check all the items to find our item
+            {
+                foreach (var itemProperty in itemProperties)
+                {
+                    if (itemProperty.GetValue(property) == null)
+                    {
+                        return new ItemPool.Item(); //item slot is empty
+                    }
+                    if (itemProperty.GetValue(property).ToString().Equals(item.name))
+                    {
+                        return item;
+                    }
+                    break;
+                }
+            }
+            return new ItemPool.Item();
         }
 
         private static void UnrecognizedCommand()
         {
             Console.WriteLine("Unrecognized command");
-        }
-
-        private static bool HeroHasMana(Hero hero, MethodInfo ability, EnemyClass enemy = null)
-        {
-            int currentMana = (int) hero.mana; //Check if the hero has mana for the ability
-            if(enemy == null) //If there is no enemy the ability is a void
-            {
-                ability.Invoke(hero, null);
-            }
-            else
-            {
-                ability.Invoke(hero, new object[] { enemy });
-            }
-            if (hero.mana < 0 && hero.mana >= -100) // If after being invoked the hero's mana is between 0 and -100 he doesn't have the mana for the ability
-            {
-                Console.WriteLine("No mana for that ability");
-                hero.mana = currentMana;
-                return false;
-            }
-            else if(hero.mana < - 100)// If after being invoked the hero's level is not enough for the ability he loses 1000 mana temporarily
-            {
-                Console.WriteLine("Need a higher level to use that ability");
-                hero.mana = currentMana;
-                return false;
-            }
-            hero.mana = currentMana;
-            return true;
         }
     }
 }

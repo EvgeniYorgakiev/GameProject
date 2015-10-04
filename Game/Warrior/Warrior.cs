@@ -4,11 +4,11 @@ namespace Warrior
 {
     public class WarriorClass : Heroes.Hero
     {
-        private static Ability shieldBashAbility = new Ability(30, 8, 1);
-        private static Ability assaultAbility = new Ability(35, 10, 3);
-        private static Ability overpowerAbility = new Ability(30, 9, 4);
-        private static Ability executeAbility = new Ability(35, 6, 6);
-        private static Ability hearthStrikeAbility = new Ability(40, 9, 7);
+        public static Ability Shieldbash = new Ability(30, 8, 1);
+        public static Ability Assault = new Ability(35, 10, 3);
+        public static Ability Overpower = new Ability(30, 9, 4);
+        public static Ability Execute = new Ability(35, 6, 6);
+        public static Ability HeartStrike = new Ability(40, 9, 7);
 
         public WarriorClass() : base()
         {
@@ -17,12 +17,12 @@ namespace Warrior
             maxMana = 35;
             health = 115;
             mana = 35;
-            minDamage = 18;
-            maxDamage = 23;
-            armor = 10;
-            fireResistance = 10;
-            iceResistance = 10;
-            lightningResistance = 10;
+            baseMinDamage = 18;
+            baseMaxDamage = 23;
+            baseArmor = 10;
+            baseFireResistance = 10;
+            baseIceResistance = 10;
+            baseLightningResistance = 10;
             maxHealthOnLevelUp = 7f;
             maxManaOnLevelUp = 2f;
             minDamageOnLevelUp = 1.5f;
@@ -32,75 +32,75 @@ namespace Warrior
         public int shieldbash(Enemy.EnemyClass enemy)
         {
             Random damageDealt = new Random();
-            if (level >= shieldBashAbility.levelRequired)
+            if (level >= Shieldbash.levelRequired)
             {
-                mana -= shieldBashAbility.mana;
+                mana -= Shieldbash.mana;
             }
             else
             {
                 mana -= 1000;
             }
-            int shieldBashAbilityAfterArmor = shieldBashAbility.damage * (100 - enemy.armor) / 100;
+            int shieldBashAbilityAfterArmor = Shieldbash.averageDamage * (100 - enemy.armor) / 100;
             return damageDealt.Next(shieldBashAbilityAfterArmor - 2, shieldBashAbilityAfterArmor + 2);
         }
 
         public int assault(Enemy.EnemyClass enemy)
         {
             Random damageDealt = new Random();
-            if (level >= assaultAbility.levelRequired)
+            if (level >= Assault.levelRequired)
             {
-                mana -= assaultAbility.mana;
+                mana -= Assault.mana;
             }
             else
             {
                 mana -= 1000;
             }
-            int assaultAbilityAfterArmor = assaultAbility.damage * (100 - enemy.armor) / 100;
+            int assaultAbilityAfterArmor = Assault.averageDamage * (100 - enemy.armor) / 100;
             return damageDealt.Next(assaultAbilityAfterArmor - 8, assaultAbilityAfterArmor + 8);
         }
 
         public int overpower(Enemy.EnemyClass enemy)
         {
             Random damageDealt = new Random();
-            if (level >= overpowerAbility.levelRequired)
+            if (level >= Overpower.levelRequired)
             {
-                mana -= overpowerAbility.mana;
+                mana -= Overpower.mana;
             }
             else
             {
                 mana -= 1000;
             }
-            int overpowerBashAbilityAfterArmor = overpowerAbility.damage * (100 - enemy.armor) / 100;
+            int overpowerBashAbilityAfterArmor = Overpower.averageDamage * (100 - enemy.armor) / 100;
             return damageDealt.Next(overpowerBashAbilityAfterArmor - 3, overpowerBashAbilityAfterArmor+ 3);
         }
 
         public int execute(Enemy.EnemyClass enemy)
         {
             Random damageDealt = new Random();
-            if (level >= executeAbility.levelRequired)
+            if (level >= Execute.levelRequired)
             {
-                mana -= executeAbility.mana;
+                mana -= Execute.mana;
             }
             else
             {
                 mana -= 1000;
             }
-            int executeAbilityAfterArmor = executeAbility.damage * (100 - enemy.armor) / 100;
+            int executeAbilityAfterArmor = Execute.averageDamage * (100 - enemy.armor) / 100;
             return damageDealt.Next(executeAbilityAfterArmor - 5, executeAbilityAfterArmor + 10);
         }
 
         public int hearthstrike(Enemy.EnemyClass enemy)
         {
             Random damageDealt = new Random();
-            if (level >= executeAbility.levelRequired)
+            if (level >= Execute.levelRequired)
             {
-                mana -= executeAbility.mana;
+                mana -= Execute.mana;
             }
             else
             {
                 mana -= 1000;
             }
-            int hearthStrikeAbilityAfterArmor = hearthStrikeAbility.damage * (100 - enemy.armor) / 100;
+            int hearthStrikeAbilityAfterArmor = HeartStrike.averageDamage * (100 - enemy.armor) / 100;
             return damageDealt.Next(hearthStrikeAbilityAfterArmor - 5, hearthStrikeAbilityAfterArmor + 10);
         }
     }

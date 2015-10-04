@@ -41,8 +41,8 @@ namespace Enemy
         public int attack(IHero hero)
         {
             Random damageDealt = new Random();
-            int minDamageAfterArmor = minDamage * (100 - hero.armor) / 100;
-            int maxDamageAfterArmor = maxDamage * (100 - hero.armor) / 100;
+            int minDamageAfterArmor = minDamage * (100 - hero.ArmorWithEquipment()) / 100;
+            int maxDamageAfterArmor = maxDamage * (100 - hero.ArmorWithEquipment()) / 100;
             return damageDealt.Next(minDamageAfterArmor, maxDamageAfterArmor);
         }
 
@@ -80,7 +80,7 @@ namespace Enemy
         {
             Random damageDealt = new Random();
             mana -= shieldbashAbility.mana;
-            int shieldBashDamageAfterArmor = shieldbashAbility.damage * (100 - hero.armor) / 100;
+            int shieldBashDamageAfterArmor = shieldbashAbility.damage * (100 - hero.ArmorWithEquipment()) / 100;
             return damageDealt.Next(shieldBashDamageAfterArmor - 2, shieldBashDamageAfterArmor + 2);
         }
     }
@@ -111,7 +111,7 @@ namespace Enemy
         {
             Random damageDealt = new Random();
             mana -= fireBlastAbility.mana;
-            int shieldBashDamageAfterArmor = fireBlastAbility.damage * (100 - hero.armor) / 100;
+            int shieldBashDamageAfterArmor = fireBlastAbility.damage * (100 - hero.ArmorWithEquipment()) / 100;
             return damageDealt.Next(shieldBashDamageAfterArmor - 2, shieldBashDamageAfterArmor + 2);
         }
     }
@@ -142,7 +142,7 @@ namespace Enemy
         {
             Random damageDealt = new Random();
             mana -= chargeAbility.mana;
-            int chargeDamageAfterArmor = chargeAbility.damage * (100 - hero.armor) / 100;
+            int chargeDamageAfterArmor = chargeAbility.damage * (100 - hero.baseArmor) / 100;
             return damageDealt.Next(chargeDamageAfterArmor - 2, chargeDamageAfterArmor + 2);
         }
     }

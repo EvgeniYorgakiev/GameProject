@@ -6,13 +6,13 @@ namespace IHeroes
     {
         public struct Ability
         {
-            public int damage;
+            public int averageDamage;
             public int mana;
             public int levelRequired;
 
             public Ability(int damage, int mana, int levelRequired)
             {
-                this.damage = damage;
+                this.averageDamage = damage;
                 this.mana = mana;
                 this.levelRequired = levelRequired;
             }
@@ -25,12 +25,12 @@ namespace IHeroes
         public float maxHealth;
         public float mana;
         public float maxMana;
-        public float minDamage;
-        public float maxDamage;
-        public int armor;
-        public int fireResistance;
-        public int iceResistance;
-        public int lightningResistance;
+        public float baseMinDamage;
+        public float baseMaxDamage;
+        public int baseArmor;
+        public int baseFireResistance;
+        public int baseIceResistance;
+        public int baseLightningResistance;
         public float maxHealthOnLevelUp;
         public float maxManaOnLevelUp;
         public float minDamageOnLevelUp;
@@ -39,6 +39,48 @@ namespace IHeroes
         public ItemPool.Item bootsSlot = new ItemPool.Item();
         public ItemPool.Item armorSlot = new ItemPool.Item();
         public ItemPool.Item glovesSlot = new ItemPool.Item();
+        public ItemPool.Item lefthandSlot = new ItemPool.Item();
+        public ItemPool.Item righthandSlot = new ItemPool.Item();
+
+        public int ArmorWithEquipment()
+        {
+            int armor = baseArmor;
+            armor += headSlot.armor;
+            armor += bootsSlot.armor;
+            armor += armorSlot.armor;
+            armor += glovesSlot.armor;
+            armor += lefthandSlot.armor;
+            armor += righthandSlot.armor;
+            return armor;
+        }
+
+        public int FireResistanceWithEquipment()
+        {
+            int fireResistance = baseFireResistance;
+            fireResistance += headSlot.fireResistance;
+            fireResistance += bootsSlot.fireResistance;
+            fireResistance += armorSlot.fireResistance;
+            fireResistance += glovesSlot.fireResistance;
+            fireResistance += lefthandSlot.fireResistance;
+            fireResistance += righthandSlot.fireResistance;
+            return fireResistance;
+        }
+
+        public float MinDamageWithEquipment()
+        {
+            float minDamage = baseMinDamage;
+            minDamage += lefthandSlot.minDamage;
+            minDamage += righthandSlot.minDamage;
+            return minDamage;
+        }
+
+        public float MaxDamageWithEquipment()
+        {
+            float maxDamage = baseMaxDamage;
+            maxDamage += lefthandSlot.maxDamage;
+            maxDamage += righthandSlot.maxDamage;
+            return maxDamage;
+        }
     }
 
     public class ItemPool

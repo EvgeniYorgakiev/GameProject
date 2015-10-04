@@ -7,18 +7,18 @@ namespace Heroes
         public int attack(Enemy.EnemyClass enemy)
         {
             Random damageDealt = new Random();
-            int minDamageAfterArmor = (int) minDamage * (100 - enemy.armor)/100;
-            int maxDamageAfterArmor = (int) maxDamage * (100 - enemy.armor) / 100;
+            int minDamageAfterArmor = (int) MinDamageWithEquipment() * (100 - enemy.armor)/100;
+            int maxDamageAfterArmor = (int) MaxDamageWithEquipment() * (100 - enemy.armor) / 100;
             return damageDealt.Next(minDamageAfterArmor, maxDamageAfterArmor);
         }
 
         public void OnLevelUp()
         {
             level++;
-            maxDamage += maxDamageOnLevelUp;
+            baseMaxDamage += maxDamageOnLevelUp;
             maxHealth += maxHealth;
             maxMana += maxMana;
-            minDamage += minDamageOnLevelUp;
+            baseMinDamage += minDamageOnLevelUp;
         }
     }
 }
