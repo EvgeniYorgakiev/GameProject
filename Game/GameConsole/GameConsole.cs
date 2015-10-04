@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GameConsole
 {
@@ -6,38 +7,26 @@ namespace GameConsole
     {
         static void Main()
         {
-            PrintCharacter("Rogue", 100, 100);
-                            
+            List<string[,]> result = new List<string[,]>();
+            result.Add(Character("Rogue", 100, 100));
+            result.Add(Character("Rogue", 100, 100));
+            result.Add(Character("Rogue", 100, 100));
+            Console.Write("{0}", string.Join(" | ",result));
         }
 
-        private static void PrintCharacter(string name, int health, int mana)
+        static string[,] Character(string name, int health, int mana)
         {
             string[] arrPar = { 
                 name,
                 health.ToString(),
                 mana.ToString()
             };
-            int count = 0;
-            string[,] matrixPrint = new string[3, 4];
-            for (int row = 0; row < matrixPrint.GetLength(0); row++)
+            string[,] staffMatrix = new string[3, 1];
+            for (int row = 0; row < staffMatrix.GetLength(0); row++)
             {
-                for (int col = 0; col < matrixPrint.GetLength(1); col++)
-                {
-                    if (row == count)
-                    {
-                        matrixPrint[row, col] = arrPar[count];
-                        count++;
-                    }
-                }
+                staffMatrix[row, 0] = arrPar[row];
             }
-            for (int row = 0; row < matrixPrint.GetLength(0); row++)
-            {
-                for (int col = 0; col < matrixPrint.GetLength(1); col++)
-                {
-                    Console.Write("|{0}\t", matrixPrint[row, col]);
-                }
-                Console.WriteLine();
-            }
+            return staffMatrix;
            
         }
     }
