@@ -9,3 +9,14 @@ C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Warrior\bin\De
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Warrior\bin\Debug\Enemy.pdb
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Warrior\bin\Debug\IHeroes.dll
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Warrior\bin\Debug\IHeroes.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Warrior\bin\Debug\Warrior.dll
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Warrior\bin\Debug\Warrior.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Warrior\bin\Debug\Enemy.dll
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Warrior\bin\Debug\Heroes.dll
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Warrior\bin\Debug\IHeroes.dll
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Warrior\bin\Debug\Enemy.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Warrior\bin\Debug\Heroes.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Warrior\bin\Debug\IHeroes.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Warrior\obj\Debug\Warrior.csprojResolveAssemblyReference.cache
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Warrior\obj\Debug\Warrior.dll
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Warrior\obj\Debug\Warrior.pdb

@@ -7,3 +7,9 @@ C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bi
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\obj\Debug\GameConsole.csprojResolveAssemblyReference.cache
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\obj\Debug\GameConsole.exe
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\obj\Debug\GameConsole.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\GameConsole\bin\Debug\GameConsole.exe.config
+E:\Softuni\AdvanceC#\Game\GameProject\Game\GameConsole\obj\Debug\GameConsole.exe
+E:\Softuni\AdvanceC#\Game\GameProject\Game\GameConsole\obj\Debug\GameConsole.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\GameConsole\bin\Debug\GameConsole.exe
+E:\Softuni\AdvanceC#\Game\GameProject\Game\GameConsole\bin\Debug\GameConsole.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\GameConsole\obj\Debug\GameConsole.csprojResolveAssemblyReference.cache

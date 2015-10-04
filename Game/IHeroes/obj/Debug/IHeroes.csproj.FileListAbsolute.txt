@@ -3,3 +3,8 @@ C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\IHeroes\bin\De
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\IHeroes\obj\Debug\IHeroes.csprojResolveAssemblyReference.cache
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\IHeroes\obj\Debug\IHeroes.dll
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\IHeroes\obj\Debug\IHeroes.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\IHeroes\bin\Debug\IHeroes.dll
+E:\Softuni\AdvanceC#\Game\GameProject\Game\IHeroes\bin\Debug\IHeroes.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\IHeroes\obj\Debug\IHeroes.csprojResolveAssemblyReference.cache
+E:\Softuni\AdvanceC#\Game\GameProject\Game\IHeroes\obj\Debug\IHeroes.dll
+E:\Softuni\AdvanceC#\Game\GameProject\Game\IHeroes\obj\Debug\IHeroes.pdb

@@ -9,3 +9,14 @@ C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Priest\bin\Deb
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Priest\bin\Debug\Enemy.pdb
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Priest\bin\Debug\IHeroes.dll
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Priest\bin\Debug\IHeroes.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Priest\bin\Debug\Priest.dll
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Priest\bin\Debug\Priest.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Priest\bin\Debug\Enemy.dll
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Priest\bin\Debug\Heroes.dll
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Priest\bin\Debug\IHeroes.dll
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Priest\bin\Debug\Enemy.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Priest\bin\Debug\Heroes.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Priest\bin\Debug\IHeroes.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Priest\obj\Debug\Priest.csprojResolveAssemblyReference.cache
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Priest\obj\Debug\Priest.dll
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Priest\obj\Debug\Priest.pdb

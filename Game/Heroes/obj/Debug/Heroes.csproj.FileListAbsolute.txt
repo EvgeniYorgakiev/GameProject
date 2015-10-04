@@ -7,3 +7,12 @@ C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\bin\Deb
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\bin\Debug\Enemy.pdb
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\bin\Debug\IHeroes.dll
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\bin\Debug\IHeroes.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Heroes\bin\Debug\Heroes.dll
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Heroes\bin\Debug\Heroes.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Heroes\bin\Debug\Enemy.dll
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Heroes\bin\Debug\IHeroes.dll
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Heroes\bin\Debug\Enemy.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Heroes\bin\Debug\IHeroes.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Heroes\obj\Debug\Heroes.csprojResolveAssemblyReference.cache
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Heroes\obj\Debug\Heroes.dll
+E:\Softuni\AdvanceC#\Game\GameProject\Game\Heroes\obj\Debug\Heroes.pdb
