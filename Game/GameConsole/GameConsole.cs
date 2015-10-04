@@ -17,28 +17,28 @@ namespace GameConsole
                 health.ToString(),
                 mana.ToString()
             };
-            string[,] matrixPrint = new string[1, 3];
-            for (int col = 0; col < matrixPrint.GetLength(1); col++)
+            int count = 0;
+            string[,] matrixPrint = new string[3, 4];
+            for (int row = 0; row < matrixPrint.GetLength(0); row++)
             {
-                matrixPrint[0, col] = arrPar[col];
-            }
-            string[,] matrix = new string[3, 4];
-            for (int col = 0; col < matrix.GetLength(1); col++)
-            {
-                for (int row = 0; row < matrix.GetLength(1); row++)
+                for (int col = 0; col < matrixPrint.GetLength(1); col++)
                 {
-                    matrix[row, col] = matrixPrint[0, row];
+                    if (row == count)
+                    {
+                        matrixPrint[row, col] = arrPar[count];
+                        count++;
+                    }
                 }
             }
-            for (int row = 0; row < matrix.GetLength(0); row++)
-			{
-			        for (int col= 0; col < matrix.GetLength(1); col++)
-			        {
-			            Console.WriteLine("|{0}|", matrix[row,col]);
-			        }
-			}
-            
-                    
+            for (int row = 0; row < matrixPrint.GetLength(0); row++)
+            {
+                for (int col = 0; col < matrixPrint.GetLength(1); col++)
+                {
+                    Console.Write("|{0}\t", matrixPrint[row, col]);
+                }
+                Console.WriteLine();
+            }
+           
         }
     }
 }
