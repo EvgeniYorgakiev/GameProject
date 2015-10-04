@@ -6,15 +6,8 @@ namespace GameConsole
     {
         static void Main()
         {
-           
-            string[,] matrix = new string[1, 4];
-            for (int row = 0; row < matrix.GetLength(0); row++)
-            {
-                for (int col = 0; col < matrix.GetLength(1); col++)
-                {
-                    PrintCharacter("Rogue", 100, 100);
-                }
-            }
+            PrintCharacter("Rogue", 100, 100);
+                            
         }
 
         private static void PrintCharacter(string name, int health, int mana)
@@ -31,15 +24,16 @@ namespace GameConsole
                 {
                     matrixPrint[row, col] = arrPar[row];
                 }
-            }
-            for (int row = 0; row < matrixPrint.GetLength(0); row++)
+            }    
+            string[,] matrix = new string[1, 4];
+            for (int row = 0; row < matrix.GetLength(0); row++)
             {
-                for (int col = 0; col < matrixPrint.GetLength(1); col++)
+                for (int col = 0; col < matrix.GetLength(1); col++)
                 {
-                    Console.Write("|{0}|", matrixPrint[row, col]);
+                    matrix[row, col] = matrixPrint[row, col];
                 }
             }
-            Console.WriteLine();
+                    
         }
     }
 }
