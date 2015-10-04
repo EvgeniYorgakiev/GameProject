@@ -4,10 +4,10 @@ namespace Mage
 {
     public class MageClass : Heroes.Hero
     {
-        private static Ability fireBallAbility = new Ability(28, 12, 1);
-        private static Ability iceBlastAbility = new Ability(28, 11,3);
-        private static Ability shockAbility = new Ability(28, 13,4);
-        private static Ability iceLanceAbility = new Ability(40, 18,6);
+        public static Ability Fireball = new Ability(28, 12, 1);
+        public static Ability IceBlast = new Ability(28, 11,3);
+        public static Ability Shock = new Ability(28, 13,4);
+        public static Ability IceLance = new Ability(40, 18,6);
 
         public MageClass() : base()
         {
@@ -16,71 +16,75 @@ namespace Mage
             maxMana = 90;
             health = 60;
             mana = 90;
-            minDamage = 13;
-            maxDamage = 19;
-            armor = 0;
-            fireResistance = 15;
-            iceResistance = 15;
-            lightningResistance = 15;
+            baseMinDamage = 13;
+            baseMaxDamage = 19;
+            baseArmor = 0;
+            baseFireResistance = 15;
+            baseIceResistance = 15;
+            baseLightningResistance = 15;
+            maxHealthOnLevelUp = 3.5f;
+            maxManaOnLevelUp = 4.5f;
+            minDamageOnLevelUp = 1.2f;
+            maxDamageOnLevelUp = 1.2f;
         }
 
         public int fireball(Enemy.EnemyClass enemy)
         {
             Random damageDealt = new Random();
-            if (level >= fireBallAbility.levelRequired)
+            if (level >= Fireball.levelRequired)
             {
-                mana -= fireBallAbility.mana;
+                mana -= Fireball.mana;
             }
             else
             {
                 mana -= 1000;
             }
-            int fireballAfterResistance = fireBallAbility.damage * (100 - enemy.fireResistance) / 100;
-            return damageDealt.Next(fireBallAbility.damage - 2, fireBallAbility.damage + 2);
+            int fireballAfterResistance = Fireball.averageDamage * (100 - enemy.fireResistance) / 100;
+            return damageDealt.Next(Fireball.averageDamage - 2, Fireball.averageDamage + 2);
         }
 
         public int iceblast(Enemy.EnemyClass enemy)
         {
             Random damageDealt = new Random();
-            if (level >= iceBlastAbility.levelRequired)
+            if (level >= IceBlast.levelRequired)
             {
-                mana -= iceBlastAbility.mana;
+                mana -= IceBlast.mana;
             }
             else
             {
                 mana -= 1000;
             }
-            int iceBlastAfterResistance = iceBlastAbility.damage * (100 - enemy.iceResistance) / 100;
+            int iceBlastAfterResistance = IceBlast.averageDamage * (100 - enemy.iceResistance) / 100;
             return damageDealt.Next(iceBlastAfterResistance - 4, iceBlastAfterResistance + 4);
         }
 
         public int shock(Enemy.EnemyClass enemy)
         {
             Random damageDealt = new Random();
-            if (level >= shockAbility.levelRequired)
+            if (level >= Shock.levelRequired)
             {
-                mana -= shockAbility.mana;
+                mana -= Shock.mana;
             }
             else
             {
                 mana -= 1000;
             }
-            int shockAfterResistance = shockAbility.damage * (100 - enemy.lightningResistance) / 100;
+            int shockAfterResistance = Shock.averageDamage * (100 - enemy.lightningResistance) / 100;
             return damageDealt.Next(shockAfterResistance - 8, shockAfterResistance + 8);
         }
 
         public int icelance(Enemy.EnemyClass enemy)
         {
             Random damageDealt = new Random();
-            if (level >= iceLanceAbility.levelRequired)
+            if (level >= IceLance.levelRequired)
             {
-                mana -= iceLanceAbility.mana;
+                mana -= IceLance.mana;
             }
             else
             {
                 mana -= 1000;
             }
-            int iceLanceAfterResistance = iceLanceAbility.damage * (100 - enemy.iceResistance) / 100;
+            int iceLanceAfterResistance = IceLance.averageDamage * (100 - enemy.iceResistance) / 100;
             return damageDealt.Next(iceLanceAfterResistance - 5, iceLanceAfterResistance + 10);
         }
     }
