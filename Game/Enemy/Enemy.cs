@@ -60,6 +60,7 @@ namespace Enemy
 
         public Skeleton() : base()
         {
+            name = "Skeleton";
             maxHealth = 130;
             maxMana = 16;
             health = 130;
@@ -91,6 +92,7 @@ namespace Enemy
 
         public SkeletonMage() : base()
         {
+            name = "Skeleton Mage";
             maxHealth = 105;
             maxMana = 24;
             health = 105;
@@ -122,6 +124,7 @@ namespace Enemy
 
         public Boar() : base()
         {
+            name = "Boar";
             maxHealth = 120;
             maxMana = 16;
             health = 120;

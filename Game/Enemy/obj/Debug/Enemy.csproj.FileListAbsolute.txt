@@ -1,10 +1,3 @@
-C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\bin\Debug\Enemy.dll
-C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\bin\Debug\Enemy.pdb
-C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\obj\Debug\Enemy.csprojResolveAssemblyReference.cache
-C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\obj\Debug\Enemy.dll
-C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\obj\Debug\Enemy.pdb
-C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\bin\Debug\IHeroes.dll
-C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\bin\Debug\IHeroes.pdb
 E:\Softuni\AdvanceC#\Game\GameProject\Game\Enemy\bin\Debug\Enemy.dll
 E:\Softuni\AdvanceC#\Game\GameProject\Game\Enemy\bin\Debug\Enemy.pdb
 E:\Softuni\AdvanceC#\Game\GameProject\Game\Enemy\bin\Debug\IHeroes.dll
@@ -12,3 +5,10 @@ E:\Softuni\AdvanceC#\Game\GameProject\Game\Enemy\bin\Debug\IHeroes.pdb
 E:\Softuni\AdvanceC#\Game\GameProject\Game\Enemy\obj\Debug\Enemy.csprojResolveAssemblyReference.cache
 E:\Softuni\AdvanceC#\Game\GameProject\Game\Enemy\obj\Debug\Enemy.dll
 E:\Softuni\AdvanceC#\Game\GameProject\Game\Enemy\obj\Debug\Enemy.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\bin\Debug\Enemy.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\bin\Debug\Enemy.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\bin\Debug\IHeroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\bin\Debug\IHeroes.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\obj\Debug\Enemy.csprojResolveAssemblyReference.cache
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\obj\Debug\Enemy.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\obj\Debug\Enemy.pdb
