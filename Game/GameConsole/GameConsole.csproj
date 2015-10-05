@@ -45,12 +45,40 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameConsole.cs" />
-    <Compile Include="list.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Enemy\Enemy.csproj">
+      <Project>{5cafee66-cd16-40ee-9628-b475b8ee844c}</Project>
+      <Name>Enemy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Heroes\Heroes.csproj">
+      <Project>{81d6a650-20f7-42a8-8c8b-594c9df81d11}</Project>
+      <Name>Heroes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IHeroes\IHeroes.csproj">
+      <Project>{de8349e6-7c52-488b-b631-570a67d50ee3}</Project>
+      <Name>IHeroes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mage\Mage.csproj">
+      <Project>{d72306ad-04bd-4c72-afc7-53789a7287f8}</Project>
+      <Name>Mage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Priest\Priest.csproj">
+      <Project>{9bf67cb1-7b91-4068-b9b4-f4d43337bd62}</Project>
+      <Name>Priest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rogue\Rogue.csproj">
+      <Project>{1f0e1e36-8f1f-46c8-9c0a-702c7fc210ab}</Project>
+      <Name>Rogue</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Warrior\Warrior.csproj">
+      <Project>{2ce9b7c5-5437-4f9a-8285-a195976c532e}</Project>
+      <Name>Warrior</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
