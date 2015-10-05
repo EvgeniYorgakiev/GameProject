@@ -391,6 +391,7 @@ namespace GameConsole
                     }
                     int startingHealth = enemies[enemyIndex].health;
                     enemies[enemyIndex].health = (enemies[enemyIndex].health - (int)ability.Invoke(heroes[currentHeroIndex], new object[] { enemies[enemyIndex] }));
+                    GameConsole.log.Append("You hit " + enemies[enemyIndex].name + " for " + (startingHealth - enemies[enemyIndex].health) + " damage\n");
                     if (enemies[enemyIndex].health < 0)
                     {
                         if (GameConsole.vanquishedEnemies.ContainsKey(enemies[enemyIndex].GetType().Name))
@@ -405,8 +406,8 @@ namespace GameConsole
                         GameConsole.log.Append("You received: ");
                         PrintItem(ItemPool.inventory[ItemPool.inventory.Count - 1]);
                         AddExperience(heroes, enemies[enemyIndex].experienceWorth);
+                        enemies.RemoveAt(enemyIndex);
                     }
-                    GameConsole.log.Append("You hit " + enemies[enemyIndex].name + " for " + (startingHealth - enemies[enemyIndex].health) + " damage\n");
                 }
                 else // Else we use an ability on an ally
                 {
