@@ -20,11 +20,20 @@ namespace GameConsole
         internal static Dictionary<string, int> vanquishedEnemies = new Dictionary<string, int>();
         internal static bool started = false;
         internal static List<List<EnemyClass>> battles = new List<List<EnemyClass>>();
+        internal static StringBuilder currentLog = new StringBuilder();
         internal static StringBuilder log = new StringBuilder();
         internal static Random random = new Random();
 
         internal static int maxLevel = 20;
         internal static List<int> levels = new List<int>();
+
+        public static List<IHero> allHeroes = new List<IHero>()
+        {
+            new Rogue.RogueClass(),
+            new Warrior.WarriorClass(),
+            new Mage.MageClass(),
+            new Priest.PriestClass()
+        };
 
         static void Main()
         {
@@ -33,11 +42,21 @@ namespace GameConsole
             Commands.ExecuteCommand("help", heroes, enemies); //Start with the help command by default
             do
             {
-                log.Clear();
+                currentLog.Clear();
                 Console.Write("Enter a command:");
                 string command = Console.ReadLine();
-                if (!started && command.ToLower() != "start")
+                if (!started && (command.ToLower() != "start"))
                 {
+                    if(command.ToLower() == "classes")
+                    {
+                        for (int i = 0; i < allHeroes.Count; i++)
+                        {
+                            Commands.PrintInfo(allHeroes.ToArray(), allHeroes[i].name.ToLower());
+                        }
+                        Console.WriteLine(currentLog);
+                        currentLog.Clear();
+                        continue;
+                    }
                     Console.WriteLine("Please start the game first");
                     continue;
                 }
@@ -70,7 +89,8 @@ namespace GameConsole
                     }
                 }
                 Commands.PrintStatus(heroes, enemies);
-                Console.WriteLine(log);
+                Console.WriteLine(currentLog);
+                log.Append(currentLog);
             }
             while (true);
         }
@@ -116,7 +136,7 @@ namespace GameConsole
         {
             if (battlesWon == battles.Count)
             {
-                log.Append("YOU WIN!!!!!!");
+                currentLog.Append("YOU WIN!!!!!!");
                 Console.WriteLine("YOU WIN!!!!!!");
             }
             else
@@ -193,7 +213,7 @@ namespace GameConsole
                 IHero test = new IHero();
                 heroes[randomHeroIndex].health = heroes[randomHeroIndex].health - //Reduce the hero's health with the damage from the ability
                     (int)abilities[randomAbilityIndex].Invoke(enemies[i], new object[] { heroes[randomHeroIndex] }); //Invoke the ability which will return an int value of the damage it deals
-                log.Append(enemies[i].name + " hits " + heroes[randomHeroIndex].name + " for " + (startingHealth - heroes[randomHeroIndex].health) + " damage\n");
+                currentLog.Append(enemies[i].name + " hits " + heroes[randomHeroIndex].name + " for " + (startingHealth - heroes[randomHeroIndex].health) + " damage\n");
             }
         }
     }
@@ -222,9 +242,9 @@ namespace GameConsole
                     }
                 case "classes":
                     {
-                        for (int i = 0; i < heroes.Length; i++)
+                        for (int i = 0; i < GameConsole.allHeroes.Count; i++)
                         {
-                            PrintInfo(heroes[i].name.ToLower());
+                            PrintInfo(GameConsole.allHeroes.ToArray(), GameConsole.allHeroes[i].name.ToLower());
                         }
                         break;
                     }
@@ -233,23 +253,35 @@ namespace GameConsole
                         PrintStatus(GameConsole.vanquishedEnemies);
                         break;
                     }
+                case "log":
+                    {
+                        GameConsole.currentLog.Append(GameConsole.log);
+                        break;
+                    }
                 default: // since the code for all heroes is the same we can just put it in default and let the try and catch pick up unregonised commands
                     {
-                        if (commandParts[1].Equals("info") && commandParts.Length == 2) //If the second part is info and the command has 2 parts
+                        try
                         {
-                            PrintInfo(commandParts[0]);
+                            if (commandParts[1].Equals("info") && commandParts.Length == 2) //If the second part is info and the command has 2 parts
+                            {
+                                PrintInfo(heroes, commandParts[0]);
+                            }
+                            else if (commandParts[1].Equals("equip"))
+                            {
+                                EquipItem(heroes, commandParts); // Check if the command is an ability command and uses it
+                            }
+                            else if (commandParts[1].Equals("unequip"))
+                            {
+                                UnEquipItem(heroes, commandParts); // Check if the command is an ability command and uses it
+                            }
+                            else
+                            {
+                                TryToUseAbility(heroes, enemies, commandParts); // Check if the command is an ability command and uses it
+                            }
                         }
-                        else if (commandParts[1].Equals("equip"))
+                        catch(Exception)
                         {
-                            EquipItem(heroes, commandParts); // Check if the command is an ability command and uses it
-                        }
-                        else if (commandParts[1].Equals("unequip"))
-                        {
-                            UnEquipItem(heroes, commandParts); // Check if the command is an ability command and uses it
-                        }
-                        else
-                        {
-                            TryToUseAbility(heroes, enemies, commandParts); // Check if the command is an ability command and uses it
+                            UnrecognizedCommand();
                         }
                         break;
                     }
@@ -292,20 +324,20 @@ namespace GameConsole
                                         if (classAbleToWearItem.ToString().ToLower().Equals(className.ToLower())) //Check if the current class being checked is equal to the hero class name
                                         {
                                             field.SetValue(heroes[currentHeroIndex], item);
-                                            GameConsole.log.Append("Item has been equipped: ");
+                                            GameConsole.currentLog.Append("Item has been equipped: ");
                                             PrintItem(item);
                                             ItemPool.inventory.Remove(item);
                                             return;
                                         }
                                     }
-                                    GameConsole.log.Append("Hero cannot equip item \n");
+                                    GameConsole.currentLog.Append("Hero cannot equip item \n");
                                     return;
                                 }
                             }
                         }
                     }
                 }
-                GameConsole.log.Append("Item not present in inventory \n");
+                GameConsole.currentLog.Append("Item not present in inventory \n");
             }
             catch (Exception) // Every unregonised commands is basically a different exception
             {
@@ -345,7 +377,7 @@ namespace GameConsole
                             }
                             if (itemField.GetValue(field.GetValue(heroes[currentHeroIndex])).ToString().ToLower().Equals(itemName.ToLower()))
                             {
-                                GameConsole.log.Append("Item has been unequipped: ");
+                                GameConsole.currentLog.Append("Item has been unequipped: ");
                                 PrintItem((ItemPool.Item)field.GetValue(heroes[currentHeroIndex]));
                                 ItemPool.inventory.Add((ItemPool.Item)field.GetValue(heroes[currentHeroIndex]));
                                 field.SetValue(heroes[currentHeroIndex], new ItemPool.Item());
@@ -355,7 +387,7 @@ namespace GameConsole
                         }
                     }
                 }
-                GameConsole.log.Append("Item not equipped on hero \n");
+                GameConsole.currentLog.Append("Item not equipped on hero \n");
             }
             catch (Exception) // Every unregonised commands is basically a different exception
             {
@@ -370,7 +402,7 @@ namespace GameConsole
                 int currentHeroIndex = GameConsole.GetHeroIndex(commandParts[0]); //Get the current hero index
                 if (GameConsole.heroesActedThisTurn[currentHeroIndex]) // Check if the hero has acted this turn
                 {
-                    GameConsole.log.Append("Hero has already acted this turn \n");
+                    GameConsole.currentLog.Append("Hero has already acted this turn \n");
                     Console.WriteLine("Hero has already acted this turn");
                     return;
                 }
@@ -391,7 +423,7 @@ namespace GameConsole
                     }
                     int startingHealth = enemies[enemyIndex].health;
                     enemies[enemyIndex].health = (enemies[enemyIndex].health - (int)ability.Invoke(heroes[currentHeroIndex], new object[] { enemies[enemyIndex] }));
-                    GameConsole.log.Append("You hit " + enemies[enemyIndex].name + " for " + (startingHealth - enemies[enemyIndex].health) + " damage\n");
+                    GameConsole.currentLog.Append("You hit " + enemies[enemyIndex].name + " for " + (startingHealth - enemies[enemyIndex].health) + " damage\n");
                     if (enemies[enemyIndex].health < 0)
                     {
                         if (GameConsole.vanquishedEnemies.ContainsKey(enemies[enemyIndex].GetType().Name))
@@ -403,7 +435,7 @@ namespace GameConsole
                             GameConsole.vanquishedEnemies.Add(enemies[enemyIndex].GetType().Name, 1);
                         }
                         enemies[enemyIndex].OnDeath();
-                        GameConsole.log.Append("You received: ");
+                        GameConsole.currentLog.Append("You received: ");
                         PrintItem(ItemPool.inventory[ItemPool.inventory.Count - 1]);
                         AddExperience(heroes, enemies[enemyIndex].experienceWorth);
                         enemies.RemoveAt(enemyIndex);
@@ -428,7 +460,7 @@ namespace GameConsole
                         {
                             heroes[heroTargetedIndex].health = heroes[heroTargetedIndex].maxHealth;
                         }
-                        GameConsole.log.Append("You healed " + heroes[heroTargetedIndex].name + " for " + (startingHealth - enemies[enemyIndex].health) + " health\n");
+                        GameConsole.currentLog.Append("You healed " + heroes[heroTargetedIndex].name + " for " + (startingHealth - enemies[enemyIndex].health) + " health\n");
                     }
                 }
                 GameConsole.heroesActedThisTurn[currentHeroIndex] = true; // If everything passed without an exception then the move was succesful and the current hero has acted
@@ -452,13 +484,13 @@ namespace GameConsole
             }
             if (hero.mana < 0 && hero.mana >= -100) // If after being invoked the hero's mana is between 0 and -100 he doesn't have the mana for the ability
             {
-                GameConsole.log.Append("No mana for that ability \n");
+                GameConsole.currentLog.Append("No mana for that ability \n");
                 hero.mana = currentMana;
                 return false;
             }
             else if (hero.mana < -100)// If after being invoked the hero's level is not enough for the ability he loses 1000 mana temporarily
             {
-                GameConsole.log.Append("Need a higher level to use that ability \n");
+                GameConsole.currentLog.Append("Need a higher level to use that ability \n");
                 hero.mana = currentMana;
                 return false;
             }
@@ -487,10 +519,14 @@ namespace GameConsole
 
         private static void StartGame()
         {
-            GameConsole.heroes[0] = new Rogue.RogueClass();
-            GameConsole.heroes[1] = new Warrior.WarriorClass();
-            GameConsole.heroes[2] = new Mage.MageClass();
-            GameConsole.heroes[3] = new Priest.PriestClass();
+            Console.WriteLine("Please select your first hero by typing in the class and name separated by spaces (e.g Rogue Pesho)");
+            AddHero(0);
+            Console.WriteLine("Please select your second hero");
+            AddHero(1);
+            Console.WriteLine("Please select your third hero");
+            AddHero(2);
+            Console.WriteLine("Please select your fourth hero");
+            AddHero(3);
             GameConsole.enemies.Clear();
             GameConsole.battlesWon = 0;
             for (int i = 0; i < GameConsole.heroesActedThisTurn.Length; i++)
@@ -499,11 +535,90 @@ namespace GameConsole
             }
             GameConsole.InitializeBattles();
             GameConsole.started = true;
+            GameConsole.currentLog.Clear();
+        }
+
+        private static void AddHero(int index)
+        {
+            do
+            {
+                try
+                {                
+                    string[] command = Console.ReadLine().Split(' ');
+                    if (command.Length != 2)
+                    {
+                        UnrecognizedCommand();
+                        Console.WriteLine(GameConsole.currentLog);
+                        GameConsole.currentLog.Clear();
+                        continue;
+                    }
+                    if (NameExists(command[1]))
+                    {
+                        Console.WriteLine("You already have a character with that name");
+                        Console.WriteLine(GameConsole.currentLog);
+                        GameConsole.currentLog.Clear();
+                        continue;
+                    }
+                    command[0] = command[0].ToLower();
+                    command[0] = ((char)(command[0][0] - 32)) + command[0].Substring(1) + "Class";
+                    int classIndex;
+                    if(ClassExists(command[0], out classIndex))
+                    {
+                        Type heroType = GameConsole.allHeroes[classIndex].GetType();
+                        dynamic hero = Activator.CreateInstance(heroType);
+                        GameConsole.heroes[index] = hero;
+                        GameConsole.heroes[index].name = command[1];
+                        break;
+                    }
+                    if(GameConsole.heroes[index] == null)
+                    {
+                        UnrecognizedCommand();
+                        Console.WriteLine(GameConsole.currentLog);
+                        GameConsole.currentLog.Clear();
+                    }
+                }
+                catch (Exception)
+                {
+                    UnrecognizedCommand();
+                    Console.WriteLine(GameConsole.currentLog);
+                    GameConsole.currentLog.Clear();
+                }
+            }
+            while (true);
+        }
+
+        private static bool NameExists(string name)
+        {
+            for (int i = 0; i < GameConsole.heroes.Length; i++)
+            {
+                if (GameConsole.heroes[i] != null)
+                {
+                    if (GameConsole.heroes[i].name.ToLower().Equals(name.ToLower()))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private static bool ClassExists(string heroClass, out int index)
+        {
+            index = -1;
+            for (int i = 0; i < GameConsole.allHeroes.Count; i++)
+            {
+                if (GameConsole.allHeroes[i].GetType().Name.ToLower().Equals(heroClass.ToLower()))
+                {
+                    index = i;
+                    return true;
+                }
+            }
+            return false;
         }
 
         private static void PrintHelp()
         {
-            GameConsole.log.Append(@"The game's objective is to defeat as many monsters as possible before you die. After every battle
+            GameConsole.currentLog.Append(@"The game's objective is to defeat as many monsters as possible before you die. After every battle
 your health and mana regenerate. The game is turn based and every turn you have to give each of your heroes a
 command after which the all of the enemies perform an action .The game is played by typing in commands in the console.
 You do not need to type in the '-'. 
@@ -531,11 +646,12 @@ Skeletons: 3
 BigBadBoss1: 1
 Total number of random enemies vanquished 5
 Total number of battles: 5)
+- Log (Gives you a log of everything you have done from the start)
 
 ");
             if(!GameConsole.started)
             {
-                Console.WriteLine(GameConsole.log);
+                Console.WriteLine(GameConsole.currentLog);
             }
         }
 
@@ -543,7 +659,7 @@ Total number of battles: 5)
         {
             foreach (var vanquishedEnemy in vanquishedEnemies)
             {
-                GameConsole.log.Append(vanquishedEnemy.Key + ": " + vanquishedEnemy.Value + "\n");
+                GameConsole.currentLog.Append(vanquishedEnemy.Key + ": " + vanquishedEnemy.Value + "\n");
             }
         }
 
@@ -558,7 +674,7 @@ Total number of battles: 5)
             }
             else
             {
-                GameConsole.log.Append("Inventory is empty. \n");
+                GameConsole.currentLog.Append("Inventory is empty. \n");
             }
         }
 
@@ -570,76 +686,84 @@ Total number of battles: 5)
             {
                 if (field.GetValue(item) == null)
                 {
-                    GameConsole.log.Append("empty \n");
+                    GameConsole.currentLog.Append("empty \n");
                     return;
                 }
                 var type = field.GetValue(item).GetType();
                 if (type == typeof(ItemPool.ClassAbleToWearItem[])) //If the type of the current field is an array of classes able to wear an item we need to print them separately
                 {
                     //Prints the classes able to wear the item
-                    GameConsole.log.Append("For: ");
+                    GameConsole.currentLog.Append("For: ");
                     object array = field.GetValue(item);
                     IEnumerable enumerable = array as IEnumerable;
                     if (enumerable != null)
                     {
                         foreach (object element in enumerable)
                         {
-                            GameConsole.log.Append(element.ToString() + " ");
+                            GameConsole.currentLog.Append(element.ToString() + " ");
                         }
                     }
-                    GameConsole.log.Append("| ");
+                    GameConsole.currentLog.Append("| ");
                 }
                 else
                 {
                     // Print item field info
                     if (isFirstField)
                     {
-                        GameConsole.log.Append("| " + field.GetValue(item).ToString() + " |");
+                        GameConsole.currentLog.Append("| " + field.GetValue(item).ToString() + " |");
                         isFirstField = false;
                     }
                     else if (field.GetValue(item).ToString() != "0")
                     {
-                        GameConsole.log.Append(field.Name + ": " + field.GetValue(item).ToString() + " | ");
+                        GameConsole.currentLog.Append(field.Name + ": " + field.GetValue(item).ToString() + " | ");
                     }
                 }
             }
-            GameConsole.log.Append("\n");
+            GameConsole.currentLog.Append("\n");
         }
 
-        private static void PrintInfo(string character)
+        public static void PrintInfo(IHero[] heroes, string character)
         {
-            int currentHeroIndex = GameConsole.GetHeroIndex(character);
-            Type type = GameConsole.heroes[currentHeroIndex].GetType(); // Get the class of the current hero
+            int currentHeroIndex = -1;
+            for (int i = 0; i < heroes.Length; i++)
+            {
+                if(character.ToLower().Equals(heroes[i].name.ToLower()))
+                {
+                    currentHeroIndex = i;
+                    break;
+                }
+            }
+            Type type = heroes[currentHeroIndex].GetType(); // Get the class of the current hero
             FieldInfo[] properties = type.GetFields(BindingFlags.Public | BindingFlags.Instance); // Get all of the fields of the current hero
-            GameConsole.log.Append("\n");
+            GameConsole.currentLog.Append("\n");
             foreach (FieldInfo property in properties)
             {
-                Type propertyType = property.GetValue(GameConsole.heroes[currentHeroIndex]).GetType();
+                Type propertyType = property.GetValue(heroes[currentHeroIndex]).GetType();
                 if (propertyType == typeof(ItemPool.Item)) // If the current field is an item we need to print it diffrently
                 {
-                    ItemPool.Item item = FindItem(property.GetValue(GameConsole.heroes[currentHeroIndex]), propertyType);
-                    GameConsole.log.Append("\t" + property.Name + ": ");
+                    ItemPool.Item item = FindItem(property.GetValue(heroes[currentHeroIndex]), propertyType);
+                    GameConsole.currentLog.Append("\t" + property.Name + ": ");
                     PrintItem(item);
                 }
                 else
                 {
-                    GameConsole.log.Append("\t" + property.Name + ": " + property.GetValue(GameConsole.heroes[currentHeroIndex]).ToString() + "\n");
+                    GameConsole.currentLog.Append("\t" + property.Name + ": " + property.GetValue(heroes[currentHeroIndex]).ToString() + "\n");
                 }
             }
             var abilities = type.GetFields(BindingFlags.Public | BindingFlags.Static);
-            GameConsole.log.Append("\tAbilities: \n");
+            GameConsole.currentLog.Append("\tAbilities: \n");
             foreach (var ability in abilities)
             {
                 Type abilityType = ability.GetValue(abilities).GetType();
                 var abilityInfos = abilityType.GetFields();
-                GameConsole.log.Append("\t\t|" + ability.Name + " | ");
+                GameConsole.currentLog.Append("\t\t|" + ability.Name + " | ");
                 foreach (var abilityInfo in abilityInfos)
                 {
-                    GameConsole.log.Append(abilityInfo.Name + ": " + abilityInfo.GetValue(ability.GetValue(abilities)).ToString() + " | ");
+                    GameConsole.currentLog.Append(abilityInfo.Name + ": " + abilityInfo.GetValue(ability.GetValue(abilities)).ToString() + " | ");
                 }
-                GameConsole.log.Append("\n");
+                GameConsole.currentLog.Append("\n");
             }
-            GameConsole.log.Append("\n");
+            GameConsole.currentLog.Append("\n");
         }
 
         private static ItemPool.Item FindItem(object property, Type propertyType)
@@ -669,15 +793,19 @@ Total number of battles: 5)
             List<string[,]> enemiesResult = new List<string[,]>();
             for (int i = 0; i < heroes.Length; i++)
             {
-                heroesResult.Add(Character(new string[] { heroes[i].name, heroes[i].health + "/" + heroes[i].maxHealth,
-                                           heroes[i].mana + "/" + heroes[i].maxMana, "Acted: " + GameConsole.heroesActedThisTurn[i],
+                string heroClass = Regex.Match(heroes[i].GetType().Name, @"^[A-Za-z](.*?(?=[A-Z]))").Value; //Match the part of the class name that is before a CapitalLetter and Starts with a capital letter
+                heroesResult.Add(Character(new string[] {heroClass + ": " + heroes[i].name,
+                                           "Health: " + heroes[i].health + "/" + heroes[i].maxHealth,
+                                           "Mana: " + heroes[i].mana + "/" + heroes[i].maxMana,
+                                           "Acted: " + GameConsole.heroesActedThisTurn[i],
                                            "Experience: " + heroes[i].experience + "/" + GameConsole.levels[heroes[i].level],
                                            "Level: " + heroes[i].level}));
             }
             for (int i = 0; i < enemies.Count; i++)
             {
-                enemiesResult.Add(Character(new string[] { enemies[i].name, enemies[i].health + "/" + enemies[i].maxHealth,
-                                            enemies[i].mana + "/" + enemies[i].maxMana }));
+                enemiesResult.Add(Character(new string[] { enemies[i].name,
+                                            "Health: " + enemies[i].health + "/" + enemies[i].maxHealth,
+                                            "Mana: " + enemies[i].mana + "/" + enemies[i].maxMana }));
             }
             PrintResult(heroesResult);
             Console.WriteLine();
@@ -737,7 +865,7 @@ Total number of battles: 5)
 
         private static void UnrecognizedCommand()
         {
-            GameConsole.log.Append("Unrecognized command\n");
+            GameConsole.currentLog.Append("Unrecognized command\n");
         }
     }
 }
