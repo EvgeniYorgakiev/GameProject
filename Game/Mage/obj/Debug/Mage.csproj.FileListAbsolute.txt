@@ -20,3 +20,14 @@ C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Mage\bin\Debug
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Mage\obj\Debug\Mage.csprojResolveAssemblyReference.cache
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Mage\obj\Debug\Mage.dll
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Mage\obj\Debug\Mage.pdb
+D:\GameTeamWork\GameProject\Game\Mage\bin\Debug\Mage.dll
+D:\GameTeamWork\GameProject\Game\Mage\bin\Debug\Mage.pdb
+D:\GameTeamWork\GameProject\Game\Mage\bin\Debug\Enemy.dll
+D:\GameTeamWork\GameProject\Game\Mage\bin\Debug\Heroes.dll
+D:\GameTeamWork\GameProject\Game\Mage\bin\Debug\IHeroes.dll
+D:\GameTeamWork\GameProject\Game\Mage\bin\Debug\Enemy.pdb
+D:\GameTeamWork\GameProject\Game\Mage\bin\Debug\Heroes.pdb
+D:\GameTeamWork\GameProject\Game\Mage\bin\Debug\IHeroes.pdb
+D:\GameTeamWork\GameProject\Game\Mage\obj\Debug\Mage.csprojResolveAssemblyReference.cache
+D:\GameTeamWork\GameProject\Game\Mage\obj\Debug\Mage.dll
+D:\GameTeamWork\GameProject\Game\Mage\obj\Debug\Mage.pdb

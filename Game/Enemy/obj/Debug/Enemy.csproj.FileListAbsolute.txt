@@ -12,3 +12,10 @@ C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\bin\Debu
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\obj\Debug\Enemy.csprojResolveAssemblyReference.cache
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\obj\Debug\Enemy.dll
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Enemy\obj\Debug\Enemy.pdb
+D:\GameTeamWork\GameProject\Game\Enemy\bin\Debug\Enemy.dll
+D:\GameTeamWork\GameProject\Game\Enemy\bin\Debug\Enemy.pdb
+D:\GameTeamWork\GameProject\Game\Enemy\bin\Debug\IHeroes.dll
+D:\GameTeamWork\GameProject\Game\Enemy\bin\Debug\IHeroes.pdb
+D:\GameTeamWork\GameProject\Game\Enemy\obj\Debug\Enemy.csprojResolveAssemblyReference.cache
+D:\GameTeamWork\GameProject\Game\Enemy\obj\Debug\Enemy.dll
+D:\GameTeamWork\GameProject\Game\Enemy\obj\Debug\Enemy.pdb
