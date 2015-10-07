@@ -1,0 +1,5 @@
+D:\GameTeamWork\GameProject\Game\Music\bin\Debug\Music.dll
+D:\GameTeamWork\GameProject\Game\Music\bin\Debug\Music.pdb
+D:\GameTeamWork\GameProject\Game\Music\obj\Debug\Music.csprojResolveAssemblyReference.cache
+D:\GameTeamWork\GameProject\Game\Music\obj\Debug\Music.dll
+D:\GameTeamWork\GameProject\Game\Music\obj\Debug\Music.pdb

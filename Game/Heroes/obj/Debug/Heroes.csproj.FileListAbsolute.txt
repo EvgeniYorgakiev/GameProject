@@ -16,3 +16,12 @@ C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\bin\Deb
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\obj\Debug\Heroes.csprojResolveAssemblyReference.cache
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\obj\Debug\Heroes.dll
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\obj\Debug\Heroes.pdb
+D:\GameTeamWork\GameProject\Game\Heroes\bin\Debug\Heroes.dll
+D:\GameTeamWork\GameProject\Game\Heroes\bin\Debug\Heroes.pdb
+D:\GameTeamWork\GameProject\Game\Heroes\bin\Debug\Enemy.dll
+D:\GameTeamWork\GameProject\Game\Heroes\bin\Debug\IHeroes.dll
+D:\GameTeamWork\GameProject\Game\Heroes\bin\Debug\Enemy.pdb
+D:\GameTeamWork\GameProject\Game\Heroes\bin\Debug\IHeroes.pdb
+D:\GameTeamWork\GameProject\Game\Heroes\obj\Debug\Heroes.csprojResolveAssemblyReference.cache
+D:\GameTeamWork\GameProject\Game\Heroes\obj\Debug\Heroes.dll
+D:\GameTeamWork\GameProject\Game\Heroes\obj\Debug\Heroes.pdb

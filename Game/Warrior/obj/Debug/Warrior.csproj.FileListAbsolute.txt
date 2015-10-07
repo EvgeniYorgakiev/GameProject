@@ -20,3 +20,14 @@ C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Warrior\bin\De
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Warrior\obj\Debug\Warrior.csprojResolveAssemblyReference.cache
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Warrior\obj\Debug\Warrior.dll
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Warrior\obj\Debug\Warrior.pdb
+D:\GameTeamWork\GameProject\Game\Warrior\bin\Debug\Warrior.dll
+D:\GameTeamWork\GameProject\Game\Warrior\bin\Debug\Warrior.pdb
+D:\GameTeamWork\GameProject\Game\Warrior\bin\Debug\Enemy.dll
+D:\GameTeamWork\GameProject\Game\Warrior\bin\Debug\Heroes.dll
+D:\GameTeamWork\GameProject\Game\Warrior\bin\Debug\IHeroes.dll
+D:\GameTeamWork\GameProject\Game\Warrior\bin\Debug\Enemy.pdb
+D:\GameTeamWork\GameProject\Game\Warrior\bin\Debug\Heroes.pdb
+D:\GameTeamWork\GameProject\Game\Warrior\bin\Debug\IHeroes.pdb
+D:\GameTeamWork\GameProject\Game\Warrior\obj\Debug\Warrior.csprojResolveAssemblyReference.cache
+D:\GameTeamWork\GameProject\Game\Warrior\obj\Debug\Warrior.dll
+D:\GameTeamWork\GameProject\Game\Warrior\obj\Debug\Warrior.pdb
