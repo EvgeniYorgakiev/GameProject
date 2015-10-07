@@ -20,3 +20,14 @@ C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Rogue\bin\Debu
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Rogue\obj\Debug\Rogue.csprojResolveAssemblyReference.cache
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Rogue\obj\Debug\Rogue.dll
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Rogue\obj\Debug\Rogue.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Rogue\bin\Debug\Rogue.dll
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Rogue\bin\Debug\Rogue.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Rogue\bin\Debug\Enemy.dll
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Rogue\bin\Debug\Heroes.dll
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Rogue\bin\Debug\IHeroes.dll
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Rogue\bin\Debug\Enemy.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Rogue\bin\Debug\Heroes.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Rogue\bin\Debug\IHeroes.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Rogue\obj\Debug\Rogue.csprojResolveAssemblyReference.cache
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Rogue\obj\Debug\Rogue.dll
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Rogue\obj\Debug\Rogue.pdb

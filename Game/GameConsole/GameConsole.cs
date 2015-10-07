@@ -8,6 +8,7 @@ using Enemy;
 using System.Collections;
 using System.Text.RegularExpressions;
 using System.Text;
+using System.IO;
 
 namespace GameConsole
 {
@@ -42,6 +43,7 @@ namespace GameConsole
             Commands.ExecuteCommand("help", heroes, enemies); //Start with the help command by default
             do
             {
+                Load();
                 currentLog.Clear();
                 Console.Write("Enter a command:");
                 string command = Console.ReadLine();
@@ -91,6 +93,7 @@ namespace GameConsole
                 Commands.PrintStatus(heroes, enemies);
                 Console.WriteLine(currentLog);
                 log.Append(currentLog);
+                Save();
             }
             while (true);
         }
@@ -137,7 +140,6 @@ namespace GameConsole
             if (battlesWon == battles.Count)
             {
                 currentLog.Append("YOU WIN!!!!!!");
-                Console.WriteLine("YOU WIN!!!!!!");
             }
             else
             {
@@ -216,8 +218,122 @@ namespace GameConsole
                 currentLog.Append(enemies[i].name + " hits " + heroes[randomHeroIndex].name + " for " + (startingHealth - heroes[randomHeroIndex].health) + " damage\n");
             }
         }
-    }
 
+        public static void Save()
+        {
+            using (var stream = new StreamWriter("../../save.txt"))
+            {
+                for (int i = 0; i < heroes.Length; i++)
+                {
+                    stream.WriteLine(heroes[i].GetType().ToString());
+                    FieldInfo[] fields = heroes[i].GetType().GetFields();
+
+                    foreach (var field in fields)
+                    {
+                        var type = field.GetValue(heroes[i]).GetType();
+                        if (type == typeof(ItemPool.Item)) // We need only the fields that are with a type of item
+                        {
+                            FieldInfo[] itemFields = type.GetFields(); // Gets all of fields of the current item slot
+                            foreach (var itemField in itemFields)
+                            {
+                                if (itemField.GetValue(field.GetValue(heroes[i])) == null)
+                                {
+                                    stream.WriteLine("empty");
+                                    break;
+                                }
+                                else
+                                {
+                                    stream.WriteLine(itemField.GetValue(field.GetValue(heroes[i])).ToString());
+                                }
+                            }
+                        }
+                        else if (type == typeof(IHero.Ability)) // We need only the fields that are with a type of item
+                        {
+                            FieldInfo[] itemFields = type.GetFields(); // Gets all of fields of the current item slot
+                            foreach (var abilityField in itemFields)
+                            {
+                                stream.WriteLine(abilityField.GetValue(field.GetValue(heroes[i])).ToString());
+                            }
+                        }
+                        else
+                        {
+                            stream.WriteLine(field.GetValue(heroes[i]).ToString());
+                        }
+                    }
+                }
+                stream.WriteLine(battlesWon);
+                foreach (var enemy in vanquishedEnemies)
+                {
+                    stream.WriteLine(enemy.Key.ToString());
+                    stream.WriteLine(enemy.Value.ToString());
+                }
+            }
+        }
+
+        public static void Load()
+        {
+            try
+            {
+                using (var stream = new StreamReader("../../save.txt"))
+                {
+                    for (int i = 0; i < heroes.Length; i++)
+                    {
+                        AssemblyName assemblyName = AssemblyName.GetAssemblyName("GameConsole.exe");
+                        string testtype = stream.ReadLine();
+                        Type heroType = Type.GetType(testtype + ", " + assemblyName.Name);
+                        dynamic hero = Activator.CreateInstance(heroType);
+                        heroes[i] = hero;
+                        FieldInfo[] fields = heroes[i].GetType().GetFields();
+
+                        foreach (var field in fields)
+                        {
+                            var type = field.GetValue(heroes[i]).GetType();
+                            if (type == typeof(ItemPool.Item)) // We need only the fields that are with a type of item
+                            {
+                                FieldInfo[] itemFields = type.GetFields(); // Gets all of fields of the current item slot
+                                foreach (var itemField in itemFields)
+                                {
+                                    object currentLine = stream.ReadLine();
+                                    field.SetValue(heroes[i], new ItemPool());
+                                    if (currentLine.ToString() == "empty")
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        itemField.SetValue(field.GetValue(heroes[i]), currentLine);
+                                    }
+                                }
+                            }
+                            else if (type == typeof(IHero.Ability)) // We need only the fields that are with a type of item
+                            {
+                                FieldInfo[] itemFields = type.GetFields(); // Gets all of fields of the current item slot
+                                foreach (var abilityField in itemFields)
+                                {
+                                    abilityField.SetValue(field.GetValue(heroes[i]), stream.ReadLine());
+                                }
+                            }
+                            else
+                            {
+                                field.SetValue(heroes[i], stream.ReadLine());
+                            }
+                        }
+                    }
+                    battlesWon = int.Parse(stream.ReadLine());
+                    string line;
+                    while((line = stream.ReadLine()) != null)
+                    {
+                        vanquishedEnemies.Add(line, int.Parse(stream.ReadLine()));
+                    }
+                }
+            }
+            catch(Exception)
+            {
+                Console.WriteLine("No save found");
+            }
+        }
+    }
+    
     public class Commands
     {
         public static void ExecuteCommand(string command, Hero[] heroes, List<EnemyClass> enemies)

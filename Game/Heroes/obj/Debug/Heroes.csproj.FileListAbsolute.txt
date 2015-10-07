@@ -16,3 +16,12 @@ C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\bin\Deb
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\obj\Debug\Heroes.csprojResolveAssemblyReference.cache
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\obj\Debug\Heroes.dll
 C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Heroes\obj\Debug\Heroes.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Heroes\bin\Debug\Heroes.dll
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Heroes\bin\Debug\Heroes.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Heroes\bin\Debug\Enemy.dll
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Heroes\bin\Debug\IHeroes.dll
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Heroes\bin\Debug\Enemy.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Heroes\bin\Debug\IHeroes.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Heroes\obj\Debug\Heroes.csprojResolveAssemblyReference.cache
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Heroes\obj\Debug\Heroes.dll
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Heroes\obj\Debug\Heroes.pdb
