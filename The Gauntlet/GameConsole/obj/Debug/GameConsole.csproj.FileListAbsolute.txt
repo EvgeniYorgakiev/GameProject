@@ -1,0 +1,52 @@
+C:\Users\name\Desktop\Visual studio Задачи\Game\GameConsole\bin\Debug\GameConsole.exe.config
+E:\Softuni\AdvanceC#\Game\GameProject\Game\GameConsole\bin\Debug\GameConsole.exe.config
+E:\Softuni\AdvanceC#\Game\GameProject\Game\GameConsole\obj\Debug\GameConsole.exe
+E:\Softuni\AdvanceC#\Game\GameProject\Game\GameConsole\obj\Debug\GameConsole.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\GameConsole\bin\Debug\GameConsole.exe
+E:\Softuni\AdvanceC#\Game\GameProject\Game\GameConsole\bin\Debug\GameConsole.pdb
+E:\Softuni\AdvanceC#\Game\GameProject\Game\GameConsole\obj\Debug\GameConsole.csprojResolveAssemblyReference.cache
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\GameConsole.exe.config
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\GameConsole.exe
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\GameConsole.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Enemy.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Heroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\IHeroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Mage.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Priest.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Rogue.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Warrior.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Enemy.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Heroes.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\IHeroes.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Mage.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Priest.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Rogue.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Warrior.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\obj\Debug\GameConsole.csprojResolveAssemblyReference.cache
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\obj\Debug\GameConsole.exe
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\obj\Debug\GameConsole.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\GameConsole.exe.config
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\obj\Debug\GameConsole.exe
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\obj\Debug\GameConsole.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\GameConsole.exe
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\GameConsole.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\Enemy.dll
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\Heroes.dll
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\IHeroes.dll
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\Mage.dll
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\Priest.dll
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\Rogue.dll
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\Warrior.dll
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\Enemy.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\Heroes.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\IHeroes.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\Mage.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\Priest.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\Rogue.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\Warrior.pdb
+C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\obj\Debug\GameConsole.csprojResolveAssemblyReference.cache
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Music.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Music.pdb
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\GameConsole\bin\Debug\GameConsole.exe.config
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\GameConsole\obj\Debug\GameConsole.exe
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\GameConsole\obj\Debug\GameConsole.pdb
