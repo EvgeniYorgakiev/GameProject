@@ -2,7 +2,7 @@
 
 namespace Rogue
 {
-    public class RogueClass : HeroesAbilties.HeroAbilties
+    public class RogueClass : Heroes.Hero
     {
         public static Ability backstabAbility = new Ability(32, 10, 1);
         public static Ability multistrikeAbility = new Ability(35, 10,3);

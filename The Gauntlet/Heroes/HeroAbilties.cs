@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace HeroesAbilties
+namespace Heroes
 {
-    public class HeroAbilties : Heroes.Hero
+    public class Hero : HeroesAttributes.HeroAttributes
     {
         Random damageDealt = new Random();
         public int attack(Enemy.EnemyClass enemy)

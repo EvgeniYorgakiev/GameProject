@@ -2,7 +2,7 @@
 
 namespace Mage
 {
-    public class MageClass : HeroesAbilties.HeroAbilties
+    public class MageClass : Heroes.Hero
     {
         public static Ability fireballAbility = new Ability(28, 12, 1);
         public static Ability iceBlastAbility = new Ability(28, 11,3);

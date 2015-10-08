@@ -1,5 +1,5 @@
 ﻿using System;
-using Heroes;
+using HeroesAttributes;
 using System.Collections.Generic;
 
 namespace Enemy
@@ -47,7 +47,7 @@ namespace Enemy
             new BanditLeader()
         };
 
-        public int attack(Hero hero)
+        public int attack(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             int minDamageAfterArmor = minDamage * (100 - hero.ArmorWithEquipment()) / 100;
@@ -86,7 +86,7 @@ namespace Enemy
                                                                  item.name.Equals("Longsword"));
         }
 
-        public int bite(Hero hero)
+        public int bite(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             mana -= biteAbility.mana;
@@ -118,7 +118,7 @@ namespace Enemy
                                                                  item.name.Equals("Staff"));
         }
 
-        public int bite(Hero hero)
+        public int bite(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             mana -= biteAbility.mana;
@@ -150,7 +150,7 @@ namespace Enemy
                                                              item.name.Equals("Dagger (right hand)"));
         }
 
-        public int charge(Hero hero)
+        public int charge(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             mana -= chargeAbility.mana;
@@ -182,7 +182,7 @@ namespace Enemy
                                                              item.name.Equals("Blessed dagger (right hand)"));
         }
 
-        public int charge(Hero hero)
+        public int charge(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             mana -= chargeAbility.mana;
@@ -190,7 +190,7 @@ namespace Enemy
             return damageDealt.Next(chargeDamageAfterArmor - 5, chargeDamageAfterArmor + 5);
         }
 
-        public int stomp(Hero hero)
+        public int stomp(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             mana -= stopmAbility.mana;
@@ -221,7 +221,7 @@ namespace Enemy
                                                                  item.name.Equals("Dagger (left hand)"));
         }
 
-        public int stab(Hero hero)
+        public int stab(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             mana -= stabAbility.mana;
@@ -254,7 +254,7 @@ namespace Enemy
                                                                  item.name.Equals("Splintmail"));
         }
 
-        public int smash(Hero hero)
+        public int smash(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             mana -= smashAbility.mana;
@@ -262,7 +262,7 @@ namespace Enemy
             return damageDealt.Next(smashDamageAfterArmor - 1, smashDamageAfterArmor + 1);
         }
 
-        public int bash(Hero hero)
+        public int bash(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             mana -= bashAbility.mana;
@@ -294,7 +294,7 @@ namespace Enemy
                                                              item.name.Equals("Dagger (right hand)"));
         }
 
-        public int lightning(Hero hero)
+        public int lightning(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             mana -= lightningAbility.mana;
@@ -326,7 +326,7 @@ namespace Enemy
                                                              item.name.Equals("Blessed dagger (right hand)"));
         }
 
-        public int boulderbash(Hero hero)
+        public int boulderbash(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             mana -= boulderBashAbility.mana;
@@ -334,7 +334,7 @@ namespace Enemy
             return damageDealt.Next(boulderBashDamageAfterArmor - 5, boulderBashDamageAfterArmor + 5);
         }
 
-        public int quake(Hero hero)
+        public int quake(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             mana -= quakeAbility.mana;
@@ -366,7 +366,7 @@ namespace Enemy
                                                              item.name.Equals("Iron dagger"));
         }
 
-        public int backstab(Hero hero)
+        public int backstab(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             mana -= backstabAbility.mana;
@@ -398,7 +398,7 @@ namespace Enemy
                                                              item.name.Equals("Sorecerer staff"));
         }
 
-        public int fireblast(Hero hero)
+        public int fireblast(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             mana -= fireBlastAbility.mana;
@@ -430,7 +430,7 @@ namespace Enemy
                                                              item.name.Equals("Guard staff"));
         }
 
-        public int assault(Hero hero)
+        public int assault(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             mana -= assaultAbility.mana;
@@ -463,7 +463,7 @@ namespace Enemy
                                                              item.name.Equals("Guard staff"));
         }
 
-        public int backstab(Hero hero)
+        public int backstab(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             mana -= backstabAbility.mana;
@@ -471,7 +471,7 @@ namespace Enemy
             return damageDealt.Next(backstabDamageAfterArmor - 8, backstabDamageAfterArmor + 8);
         }
 
-        public int flurry(Hero hero)
+        public int flurry(HeroAttributes hero)
         {
             Random damageDealt = new Random();
             mana -= flurryAbility.mana;
