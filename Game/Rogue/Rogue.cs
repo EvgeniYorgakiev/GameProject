@@ -4,10 +4,16 @@ namespace Rogue
 {
     public class RogueClass : Heroes.Hero
     {
-        public static Ability Backstab = new Ability(32, 10, 1);
-        public static Ability Multistrike = new Ability(35, 10,3);
-        public static Ability BelowTheBelt = new Ability(30, 8, 4);
-        public static Ability StealthKill = new Ability(35, 16, 6);
+        public static Ability backstabAbility = new Ability(32, 10, 1);
+        public static Ability multistrikeAbility = new Ability(35, 10,3);
+        public static Ability belowTheBeltAbility = new Ability(30, 8, 4);
+        public static Ability stealthKillAbility = new Ability(35, 16, 6);
+        public static Ability twinFangsAbility = new Ability(40, 18, 8);
+        public static Ability spinningBladesAbility = new Ability(50, 22, 10);
+        public static Ability hookAndTackleAbility = new Ability(60, 30, 13);
+        public static Ability ambushAbility = new Ability(65, 35, 15);
+        public static Ability shadowStrikeAbility = new Ability(75, 40, 18);
+        public static Ability throatCutAbility = new Ability(90, 45, 20);
 
         public RogueClass() : base()
         {
@@ -31,61 +37,151 @@ namespace Rogue
         public int backstab(Enemy.EnemyClass enemy)
         {
             Random damageDealt = new Random();
-            if(level >= Backstab.levelRequired)
+            if(level >= backstabAbility.levelRequired)
             {
-                mana -= Backstab.mana;
+                mana -= backstabAbility.mana;
             }
             else
             {
                 mana -= 1000;
             }
-            int backstabAbilityAfterArmor = Backstab.averageDamage * (100 - enemy.armor) / 100;
+            int backstabAbilityAfterArmor = backstabAbility.averageDamage * (100 - enemy.armor) / 100;
             return damageDealt.Next(backstabAbilityAfterArmor - 2, backstabAbilityAfterArmor + 2);
         }
 
         public int multistrike(Enemy.EnemyClass enemy)
         {
             Random damageDealt = new Random();
-            if (level >= Multistrike.levelRequired)
+            if (level >= multistrikeAbility.levelRequired)
             {
-                mana -= Multistrike.mana;
+                mana -= multistrikeAbility.mana;
             }
             else
             {
                 mana -= 1000;
             }
-            int multistrikeAfterArmor = Multistrike.averageDamage * (100 - enemy.armor) / 100;
+            int multistrikeAfterArmor = multistrikeAbility.averageDamage * (100 - enemy.armor) / 100;
             return damageDealt.Next(multistrikeAfterArmor - 8, multistrikeAfterArmor + 8);
         }
 
         public int belowthebelt(Enemy.EnemyClass enemy)
         {
             Random damageDealt = new Random();
-            if (level >= BelowTheBelt.levelRequired)
+            if (level >= belowTheBeltAbility.levelRequired)
             {
-                mana -= BelowTheBelt.mana;
+                mana -= belowTheBeltAbility.mana;
             }
             else
             {
                 mana -= 1000;
             }
-            int shootAbilityAfterArmor = BelowTheBelt.averageDamage * (100 - enemy.armor) / 100;
+            int shootAbilityAfterArmor = belowTheBeltAbility.averageDamage * (100 - enemy.armor) / 100;
             return damageDealt.Next(shootAbilityAfterArmor - 3, shootAbilityAfterArmor + 3);
         }
 
         public int stealthkill(Enemy.EnemyClass enemy)
         {
             Random damageDealt = new Random();
-            if (level >= StealthKill.levelRequired)
+            if (level >= stealthKillAbility.levelRequired)
             {
-                mana -= StealthKill.mana;
+                mana -= stealthKillAbility.mana;
             }
             else
             {
                 mana -= 1000;
             }
-            int stealthKillAbilityAfterArmor = StealthKill.averageDamage * (100 - enemy.armor) / 100;
+            int stealthKillAbilityAfterArmor = stealthKillAbility.averageDamage * (100 - enemy.armor) / 100;
             return damageDealt.Next(stealthKillAbilityAfterArmor - 5, stealthKillAbilityAfterArmor + 10);
+        }
+
+        public int twinfangs(Enemy.EnemyClass enemy)
+        {
+            Random damageDealt = new Random();
+            if (level >= twinFangsAbility.levelRequired)
+            {
+                mana -= twinFangsAbility.mana;
+            }
+            else
+            {
+                mana -= 1000;
+            }
+            int twinFangsAbilityAfterArmor = twinFangsAbility.averageDamage * (100 - enemy.armor) / 100;
+            return damageDealt.Next(twinFangsAbilityAfterArmor - 5, twinFangsAbilityAfterArmor + 10);
+        }
+
+        public int spinningblades(Enemy.EnemyClass enemy)
+        {
+            Random damageDealt = new Random();
+            if (level >= spinningBladesAbility.levelRequired)
+            {
+                mana -= spinningBladesAbility.mana;
+            }
+            else
+            {
+                mana -= 1000;
+            }
+            int spinningBladesAbilityAfterArmor = spinningBladesAbility.averageDamage * (100 - enemy.armor) / 100;
+            return damageDealt.Next(spinningBladesAbilityAfterArmor - 5, spinningBladesAbilityAfterArmor + 10);
+        }
+
+        public int hookandtackle(Enemy.EnemyClass enemy)
+        {
+            Random damageDealt = new Random();
+            if (level >= hookAndTackleAbility.levelRequired)
+            {
+                mana -= hookAndTackleAbility.mana;
+            }
+            else
+            {
+                mana -= 1000;
+            }
+            int hookAndTackleAbilityAfterArmor = hookAndTackleAbility.averageDamage * (100 - enemy.armor) / 100;
+            return damageDealt.Next(hookAndTackleAbilityAfterArmor - 5, hookAndTackleAbilityAfterArmor + 10);
+        }
+
+        public int ambush(Enemy.EnemyClass enemy)
+        {
+            Random damageDealt = new Random();
+            if (level >= ambushAbility.levelRequired)
+            {
+                mana -= ambushAbility.mana;
+            }
+            else
+            {
+                mana -= 1000;
+            }
+            int ambushAbilityAfterArmor = ambushAbility.averageDamage * (100 - enemy.armor) / 100;
+            return damageDealt.Next(ambushAbilityAfterArmor - 5, ambushAbilityAfterArmor + 10);
+        }
+
+        public int shadowstrike(Enemy.EnemyClass enemy)
+        {
+            Random damageDealt = new Random();
+            if (level >= shadowStrikeAbility.levelRequired)
+            {
+                mana -= shadowStrikeAbility.mana;
+            }
+            else
+            {
+                mana -= 1000;
+            }
+            int shadowStrikeAbilityAfterArmor = shadowStrikeAbility.averageDamage * (100 - enemy.armor) / 100;
+            return damageDealt.Next(shadowStrikeAbilityAfterArmor - 5, shadowStrikeAbilityAfterArmor + 10);
+        }
+
+        public int throatcut(Enemy.EnemyClass enemy)
+        {
+            Random damageDealt = new Random();
+            if (level >= throatCutAbility.levelRequired)
+            {
+                mana -= throatCutAbility.mana;
+            }
+            else
+            {
+                mana -= 1000;
+            }
+            int throatCutAbilityAfterArmor = throatCutAbility.averageDamage * (100 - enemy.armor) / 100;
+            return damageDealt.Next(throatCutAbilityAfterArmor - 5, throatCutAbilityAfterArmor + 10);
         }
     }
 }

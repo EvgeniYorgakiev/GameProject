@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GameConsole</RootNamespace>
     <AssemblyName>GameConsole</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -66,6 +66,10 @@
     <ProjectReference Include="..\Mage\Mage.csproj">
       <Project>{d72306ad-04bd-4c72-afc7-53789a7287f8}</Project>
       <Name>Mage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Music\Music.csproj">
+      <Project>{c15403e3-f833-462e-ba90-85df911da40f}</Project>
+      <Name>Music</Name>
     </ProjectReference>
     <ProjectReference Include="..\Priest\Priest.csproj">
       <Project>{9bf67cb1-7b91-4068-b9b4-f4d43337bd62}</Project>

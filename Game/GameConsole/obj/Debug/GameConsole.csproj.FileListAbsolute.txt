@@ -45,3 +45,5 @@ C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\Priest
 C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\Rogue.pdb
 C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\bin\Debug\Warrior.pdb
 C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\GameConsole\obj\Debug\GameConsole.csprojResolveAssemblyReference.cache
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Music.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\GameConsole\bin\Debug\Music.pdb

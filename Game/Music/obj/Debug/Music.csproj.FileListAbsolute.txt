@@ -1,0 +1,5 @@
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Music\bin\Debug\Music.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Music\bin\Debug\Music.pdb
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Music\obj\Debug\Music.csprojResolveAssemblyReference.cache
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Music\obj\Debug\Music.dll
+C:\Users\name\Desktop\Visual studio Задачи\GameProject\Game\Music\obj\Debug\Music.pdb

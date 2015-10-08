@@ -1,0 +1,13 @@
+start
+rogue reaper
+rogue reaper1
+rogue reaper2
+rogue reaper3
+reaper attack 1
+reaper1 attack 1
+reaper2 attack 1
+reaper3 attack 1
+reaper attack 1
+reaper1 attack 1
+reaper2 attack 1
+reaper3 attack 1
