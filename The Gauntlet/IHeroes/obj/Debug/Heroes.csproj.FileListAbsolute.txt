@@ -1,0 +1,5 @@
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\IHeroes\bin\Debug\IHeroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\IHeroes\bin\Debug\IHeroes.pdb
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\IHeroes\obj\Debug\Heroes.csprojResolveAssemblyReference.cache
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\IHeroes\obj\Debug\IHeroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\IHeroes\obj\Debug\IHeroes.pdb

@@ -55,13 +55,13 @@
       <Project>{5cafee66-cd16-40ee-9628-b475b8ee844c}</Project>
       <Name>Enemy</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Heroes\Heroes.csproj">
+    <ProjectReference Include="..\Heroes\HeroAbilties.csproj">
       <Project>{81d6a650-20f7-42a8-8c8b-594c9df81d11}</Project>
-      <Name>Heroes</Name>
+      <Name>HeroAbilties</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IHeroes\IHeroes.csproj">
+    <ProjectReference Include="..\IHeroes\Heroes.csproj">
       <Project>{de8349e6-7c52-488b-b631-570a67d50ee3}</Project>
-      <Name>IHeroes</Name>
+      <Name>Heroes</Name>
     </ProjectReference>
     <ProjectReference Include="..\Mage\Mage.csproj">
       <Project>{d72306ad-04bd-4c72-afc7-53789a7287f8}</Project>

@@ -2,7 +2,7 @@
 
 namespace Warrior
 {
-    public class WarriorClass : Heroes.Hero
+    public class WarriorClass : HeroesAbilties.HeroAbilties
     {
         public static Ability rendAbility = new Ability(30, 8, 1);
         public static Ability assaultAbility = new Ability(35, 10, 3);

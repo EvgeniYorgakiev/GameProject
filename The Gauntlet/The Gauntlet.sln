@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameConsole", "GameConsole\GameConsole.csproj", "{9E1CC24A-FF64-4B25-9A40-AC971BABB380}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heroes", "Heroes\Heroes.csproj", "{81D6A650-20F7-42A8-8C8B-594C9DF81D11}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeroAbilties", "Heroes\HeroAbilties.csproj", "{81D6A650-20F7-42A8-8C8B-594C9DF81D11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rogue", "Rogue\Rogue.csproj", "{1F0E1E36-8F1F-46C8-9C0A-702C7FC210AB}"
 EndProject
@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warrior", "Warrior\Warrior.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enemy", "Enemy\Enemy.csproj", "{5CAFEE66-CD16-40EE-9628-B475B8EE844C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IHeroes", "IHeroes\IHeroes.csproj", "{DE8349E6-7C52-488B-B631-570A67D50EE3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heroes", "IHeroes\Heroes.csproj", "{DE8349E6-7C52-488B-B631-570A67D50EE3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Music", "Music\Music.csproj", "{C15403E3-F833-462E-BA90-85DF911DA40F}"
 EndProject

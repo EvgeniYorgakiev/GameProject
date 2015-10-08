@@ -1,0 +1,9 @@
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Heroes\bin\Debug\Heroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Heroes\bin\Debug\Heroes.pdb
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Heroes\bin\Debug\Enemy.dll
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Heroes\bin\Debug\IHeroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Heroes\bin\Debug\Enemy.pdb
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Heroes\bin\Debug\IHeroes.pdb
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Heroes\obj\Debug\HeroAbilties.csprojResolveAssemblyReference.cache
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Heroes\obj\Debug\Heroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Heroes\obj\Debug\Heroes.pdb

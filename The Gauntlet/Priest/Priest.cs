@@ -2,7 +2,7 @@
 
 namespace Priest
 {
-    public class PriestClass : Heroes.Hero
+    public class PriestClass : HeroesAbilties.HeroAbilties
     {
         public static Ability flashHealAbility = new Ability(15, 12,1);
         public static Ability rejuvanateAbility = new Ability(16, 11,3);
@@ -75,7 +75,7 @@ namespace Priest
             return damageDealt.Next(regenarationAbility.averageDamage - 8, regenarationAbility.averageDamage + 8);
         }
 
-        public void revive(Heroes.Hero hero)
+        public void revive(HeroesAbilties.HeroAbilties hero)
         {
             if (level >= reviveAbility.levelRequired)
             {

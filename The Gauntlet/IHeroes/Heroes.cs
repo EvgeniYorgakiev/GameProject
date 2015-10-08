@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace IHeroes
+namespace Heroes
 {
-    public class IHero
+    public class Hero
     {
         public struct Ability
         {

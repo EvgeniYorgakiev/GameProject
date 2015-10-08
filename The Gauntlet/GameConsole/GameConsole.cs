@@ -2,8 +2,8 @@
 using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
-using IHeroes;
 using Heroes;
+using HeroesAbilties;
 using Enemy;
 using System.Collections;
 using System.Text.RegularExpressions;
@@ -15,7 +15,7 @@ namespace GameConsole
 {
     class GameConsole
     {
-        internal static Hero[] heroes = new Hero[4];
+        internal static HeroAbilties[] heroes = new HeroAbilties[4];
         internal static List<EnemyClass> enemies = new List<EnemyClass>();
         internal static bool[] heroesActedThisTurn = new bool[4];
         internal static int battlesWon = 0;
@@ -31,7 +31,7 @@ namespace GameConsole
         internal static int maxLevel = 20;
         internal static List<int> levels = new List<int>();
 
-        public static List<IHero> allHeroes = new List<IHero>()
+        public static List<Hero> allHeroes = new List<Hero>()
         {
             new Rogue.RogueClass(),
             new Warrior.WarriorClass(),
@@ -259,7 +259,7 @@ namespace GameConsole
                 }
                 int randomAbilityIndex = random.Next(0, abilities.Count); //Use a random ability from the list
                 float startingHealth = heroes[randomHeroIndex].health;
-                IHero test = new IHero();
+                Hero test = new Hero();
                 heroes[randomHeroIndex].health = heroes[randomHeroIndex].health - //Reduce the hero's health with the damage from the ability
                     (int)abilities[randomAbilityIndex].Invoke(enemies[i], new object[] { heroes[randomHeroIndex] }); //Invoke the ability which will return an int value of the damage it deals
                 if(heroes[randomHeroIndex].health < 0)
@@ -300,7 +300,7 @@ namespace GameConsole
                                     break; // We need only the name of the item which is always first
                                 }
                             }
-                            else if (type == typeof(IHero.Ability)) // We need only the fields that are with a type of item
+                            else if (type == typeof(Hero.Ability)) // We need only the fields that are with a type of item
                             {
                                 FieldInfo[] itemFields = type.GetFields(); // Gets all of fields of the current item slot
                                 foreach (var abilityField in itemFields)
@@ -437,7 +437,7 @@ namespace GameConsole
                                 ItemPool.inventory.Add(Commands.FindItemWithName(currentLine));
                                 Commands.EquipItem(heroes, itemName: currentLine, currentHeroIndex: i);
                             }
-                            else if (type == typeof(IHero.Ability)) // We need only the fields that are with a type of item
+                            else if (type == typeof(Hero.Ability)) // We need only the fields that are with a type of item
                             {
                                 FieldInfo[] abilities = type.GetFields(); // Gets all of fields of the current item slot
                                 foreach (var abilityField in abilities)
@@ -572,7 +572,7 @@ namespace GameConsole
     
     public class Commands
     {
-        public static void ExecuteCommand(string command, Hero[] heroes, List<EnemyClass> enemies)
+        public static void ExecuteCommand(string command, HeroAbilties[] heroes, List<EnemyClass> enemies)
         {
             string[] commandParts = command.Split(' ');
             switch (commandParts[0].ToLower()) //Check if the first word of the command matches any of the basics
@@ -675,7 +675,7 @@ namespace GameConsole
             }
         }
 
-        public static void EquipItem(Hero[] heroes, string[] commandParts = null, string itemName = "", int currentHeroIndex = 0)
+        public static void EquipItem(HeroAbilties[] heroes, string[] commandParts = null, string itemName = "", int currentHeroIndex = 0)
         {
             try
             {
@@ -734,7 +734,7 @@ namespace GameConsole
             }
         }
 
-        private static void UnEquipItem(Hero[] heroes, string[] commandParts)
+        private static void UnEquipItem(HeroAbilties[] heroes, string[] commandParts)
         {
             try
             {
@@ -784,7 +784,7 @@ namespace GameConsole
             }
         }
 
-        private static void TryToUseAbility(Hero[] heroes, List<EnemyClass> enemies, string[] commandParts)
+        private static void TryToUseAbility(HeroAbilties[] heroes, List<EnemyClass> enemies, string[] commandParts)
         {
             try
             {
@@ -869,7 +869,7 @@ namespace GameConsole
             }
         }
 
-        private static bool HeroHasMana(Hero hero, MethodInfo ability, EnemyClass enemy = null)
+        private static bool HeroHasMana(HeroAbilties hero, MethodInfo ability, EnemyClass enemy = null)
         {
             int currentMana = (int)hero.mana; //Check if the hero has mana for the ability
             if (enemy == null) //If there is no enemy the ability is a void
@@ -896,7 +896,7 @@ namespace GameConsole
             return true;
         }
 
-        private static void AddExperience(Hero[] heroes, int experienceGained)
+        private static void AddExperience(HeroAbilties[] heroes, int experienceGained)
         {
             for (int i = 0; i < heroes.Length; i++) // Go through each hero and add the experience to all of them not just one
             {
@@ -1132,7 +1132,7 @@ Total number of battles: 5)
             GameConsole.currentLog.Append("\n");
         }
 
-        public static void PrintInfo(IHero[] heroes, string character)
+        public static void PrintInfo(Hero[] heroes, string character)
         {
             int currentHeroIndex = -1;
             for (int i = 0; i < heroes.Length; i++)
@@ -1197,7 +1197,7 @@ Total number of battles: 5)
             return new ItemPool.Item();
         }
 
-        public static void PrintStatus(Hero[] heroes, List<EnemyClass> enemies)
+        public static void PrintStatus(HeroAbilties[] heroes, List<EnemyClass> enemies)
         {
             List<string[,]> heroesResult = new List<string[,]>();
             List<string[,]> enemiesResult = new List<string[,]>();

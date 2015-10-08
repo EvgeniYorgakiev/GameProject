@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DE8349E6-7C52-488B-B631-570A67D50EE3}</ProjectGuid>
+    <ProjectGuid>{81D6A650-20F7-42A8-8C8B-594C9DF81D11}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IHeroes</RootNamespace>
-    <AssemblyName>IHeroes</AssemblyName>
+    <RootNamespace>Heroes</RootNamespace>
+    <AssemblyName>Heroes</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -41,8 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IHeroes.cs" />
+    <Compile Include="HeroAbilties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Enemy\Enemy.csproj">
+      <Project>{5cafee66-cd16-40ee-9628-b475b8ee844c}</Project>
+      <Name>Enemy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IHeroes\Heroes.csproj">
+      <Project>{de8349e6-7c52-488b-b631-570a67d50ee3}</Project>
+      <Name>Heroes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

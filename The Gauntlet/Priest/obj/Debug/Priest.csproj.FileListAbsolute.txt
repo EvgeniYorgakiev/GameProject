@@ -31,3 +31,14 @@ C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Priest\bin\Debug\IHeroes.pdb
 C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Priest\obj\Debug\Priest.csprojResolveAssemblyReference.cache
 C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Priest\obj\Debug\Priest.dll
 C:\Users\Stefan\Desktop\CSharpGame\GameProject\Game\Priest\obj\Debug\Priest.pdb
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Priest\bin\Debug\Priest.dll
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Priest\bin\Debug\Priest.pdb
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Priest\bin\Debug\Enemy.dll
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Priest\bin\Debug\Heroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Priest\bin\Debug\IHeroes.dll
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Priest\bin\Debug\Enemy.pdb
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Priest\bin\Debug\Heroes.pdb
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Priest\bin\Debug\IHeroes.pdb
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Priest\obj\Debug\Priest.csprojResolveAssemblyReference.cache
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Priest\obj\Debug\Priest.dll
+C:\Users\name\Desktop\Visual studio Задачи\The Gauntlet\The Gauntlet\Priest\obj\Debug\Priest.pdb

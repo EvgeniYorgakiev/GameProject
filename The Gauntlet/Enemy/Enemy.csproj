@@ -45,9 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IHeroes\IHeroes.csproj">
+    <ProjectReference Include="..\IHeroes\Heroes.csproj">
       <Project>{de8349e6-7c52-488b-b631-570a67d50ee3}</Project>
-      <Name>IHeroes</Name>
+      <Name>Heroes</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
