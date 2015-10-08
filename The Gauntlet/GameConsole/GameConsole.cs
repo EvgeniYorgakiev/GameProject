@@ -837,6 +837,11 @@ namespace GameConsole
                 else // Else we use an ability on an ally
                 {
                     int heroTargetedIndex = GameConsole.GetHeroIndex(commandParts[2]);
+                    if (GameConsole.heroes[heroTargetedIndex].health <= 0)
+                    {
+                        GameConsole.currentLog.Append("Hero is dead. Revive him first \n");
+                        return;
+                    }
                     if (!HeroHasMana(heroes[currentHeroIndex], ability))
                     {
                         return;
@@ -853,7 +858,7 @@ namespace GameConsole
                         {
                             heroes[heroTargetedIndex].health = heroes[heroTargetedIndex].maxHealth;
                         }
-                        GameConsole.currentLog.Append("You healed " + heroes[heroTargetedIndex].name + " for " + (startingHealth - enemies[enemyIndex].health) + " health\n");
+                        GameConsole.currentLog.Append("You healed " + heroes[heroTargetedIndex].name + " for " + (startingHealth - heroes[heroTargetedIndex].health) + " health\n");
                     }
                 }
                 GameConsole.heroesActedThisTurn[currentHeroIndex] = true; // If everything passed without an exception then the move was succesful and the current hero has acted
