@@ -1,0 +1,7 @@
+3
+Spider: 4
+
+ArmoredWolf: 1
+
+Boar: 1
+

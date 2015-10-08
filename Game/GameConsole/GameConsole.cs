@@ -48,10 +48,6 @@ namespace GameConsole
             Load();
             if (loadWasSuccessful && battlesWon < battles.Count)
             {
-                for (int i = 0; i < heroesActedThisTurn.Length; i++)
-                {
-                    heroesActedThisTurn[i] = false;
-                }
                 started = true;
                 Console.Clear();
                 Commands.PrintStatus(heroes, enemies);
@@ -281,6 +277,7 @@ namespace GameConsole
                 {
                     for (int i = 0; i < heroes.Length; i++) // Saves the heroes
                     {
+                        stream.WriteLine(heroesActedThisTurn[i]);
                         stream.WriteLine(heroes[i].GetType().ToString());
                         FieldInfo[] fields = heroes[i].GetType().GetFields();
 
@@ -351,16 +348,16 @@ namespace GameConsole
 
         public static void SaveHighScore()
         {
-            using (var outStream = new FileStream("../../highscore.txt", FileMode.Append, FileAccess.Write, FileShare.Read))
+            using (var outStream = new FileStream("../../highscore.txt", FileMode.Open, FileAccess.Write, FileShare.Read))
             {
                 using (var inStream = new FileStream("../../highscore.txt", FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
+                    var streamWriter = new StreamWriter(outStream);
+                    var streamReader = new StreamReader(inStream);
                     try
                     {
-                        var streamWriter = new StreamWriter(outStream);
-                        var streamReader = new StreamReader(inStream);
                         string currentLine = streamReader.ReadLine();
-                        if(currentLine != "")
+                        if(currentLine != null)
                         {
                             int HighestBattlesWon = int.Parse(currentLine);
                             if (HighestBattlesWon < battlesWon)
@@ -379,6 +376,8 @@ namespace GameConsole
                     }
                     finally
                     {
+                        streamWriter.Close();
+                        streamReader.Close();
                         outStream.Close();
                         inStream.Close();
                     }
@@ -391,7 +390,7 @@ namespace GameConsole
             streamWriter.WriteLine(battlesWon);
             foreach (var enemy in vanquishedEnemies)
             {
-                currentLog.Append(enemy.Key + ": " + enemy.Value + "\n");
+                streamWriter.WriteLine(enemy.Key + ": " + enemy.Value);
             }
         }
 
@@ -399,10 +398,11 @@ namespace GameConsole
         {
             using (var stream = new StreamReader("../../highscore.txt"))
             {
-                string line;
+                string line = stream.ReadLine();
+                currentLog.Append("battles won: " + line + "\n");
                 while ((line = stream.ReadLine()) != null)
                 {
-                    currentLog.Append(line + "\\");
+                    currentLog.Append(line + "\n");
                 }
             }
         }
@@ -415,6 +415,7 @@ namespace GameConsole
                 {
                     for (int i = 0; i < heroes.Length; i++) // Loads the heroes
                     {
+                        heroesActedThisTurn[i] = bool.Parse(stream.ReadLine());
                         Type heroType = FindType(stream.ReadLine());
                         dynamic hero = Activator.CreateInstance(heroType);
                         heroes[i] = hero;

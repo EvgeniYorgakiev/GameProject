@@ -16,8 +16,8 @@ namespace Heroes
         {
             level++;
             baseMaxDamage += maxDamageOnLevelUp;
-            maxHealth += maxHealth;
-            maxMana += maxMana;
+            maxHealth += maxHealthOnLevelUp;
+            maxMana += maxManaOnLevelUp;
             baseMinDamage += minDamageOnLevelUp;
         }
     }
