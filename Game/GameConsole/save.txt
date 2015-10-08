@@ -1,4 +1,4 @@
-True
+False
 Rogue.RogueClass
 32
 10
@@ -32,11 +32,11 @@ Rogue.RogueClass
 20
 reaper
 3
-382
-236
-380
+373
+0
+105
 55
-220
+61
 23.6
 28.6
 5
@@ -86,14 +86,14 @@ Rogue.RogueClass
 45
 20
 reaper1
-3
-382
-209
-380
+2
+343
+0
+100
 55
-220
-23.6
-28.6
+58
+21.8
+26.8
 5
 0
 0
@@ -141,14 +141,14 @@ Rogue.RogueClass
 45
 20
 reaper2
-3
-382
-285
-380
+2
+313
+0
+100
 55
-220
-23.6
-28.6
+58
+21.8
+26.8
 5
 0
 0
@@ -197,11 +197,11 @@ Rogue.RogueClass
 20
 reaper3
 3
-382
-285
-380
+373
+15
+105
 55
-220
+61
 23.6
 28.6
 5
@@ -218,38 +218,25 @@ empty
 empty
 empty
 empty
-3
-Enemy.Spider
-Spider
-57
-105
+2
+Enemy.ArmoredWolf
+Armored Wolf
+22
+130
 8
-24
-15
-21
-0
-5
-5
-5
-45
-Enemy.Boar
-Boar
-120
-120
-0
 16
 18
 23
+10
 0
 0
 0
-0
-30
+36
 Enemy.Spider
 Spider
 105
 105
-8
+24
 24
 15
 21
@@ -259,17 +246,36 @@ Spider
 5
 45
 3
-7
-Cloth gloves
+8
+Chainmail armor
 Chainmail gloves
-Cloth boots
-Dagger (right hand)
-Cloth helm
-Staff
 Chainmail helm
+Leather armor
+Cloth boots
+Leather gloves
+Leather gloves
+Leather gloves
 Spider
-4
+21
 ArmoredWolf
-2
+24
 Boar
+16
+Centaur
+2
+OrcCrusher
+8
+Goblin
+3
+Shaman
+9
+Cyclops
+2
+Sorcerer
+3
+Bandit
+7
+DesertedGuard
+8
+BanditLeader
 1

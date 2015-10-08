@@ -78,7 +78,6 @@ namespace GameConsole
                     continue;
                 }
                 Commands.ExecuteCommand(command, heroes, enemies); //Try to execute the command
-                Console.Clear();
                 if (NoEnemiesAlive())
                 {
                     battlesWon++;
@@ -87,7 +86,20 @@ namespace GameConsole
                     {
                         heroesActedThisTurn[i] = false; // Once all enemies are dead we start a new turn in which the heroes have not acted
                     }
+                    for (int i = 0; i < heroes.Length; i++)
+                    {
+                        heroes[i].health += (int)(heroes[i].maxHealth * 0.25f);
+                        if (heroes[i].health > heroes[i].maxHealth)
+                        {
+                            heroes[i].health = (int)heroes[i].maxHealth;
+                        }
+                        if (heroes[i].mana > heroes[i].mana)
+                        {
+                            heroes[i].mana = (int)heroes[i].mana;
+                        }
+                    }
                 }
+                Console.Clear();
                 if (AllHeroesHaveActed())
                 {
                     AIAction();
@@ -102,25 +114,15 @@ namespace GameConsole
                     }
                     if (noHeroesAlive)
                     {
-                        log.Append("You lost. Type in start if you want to restart the game");
-                    }
-                    else
-                    {
-                        for (int i = 0; i < heroes.Length; i++)
-                        {
-                            heroes[i].health += (int)(heroes[i].maxHealth * 0.25f);
-                            if(heroes[i].health > heroes[i].maxHealth)
-                            {
-                                heroes[i].health = (int) heroes[i].maxHealth;
-                            }
-                            if (heroes[i].mana > heroes[i].mana)
-                            {
-                                heroes[i].mana = (int)heroes[i].mana;
-                            }
-                        }
+                        currentLog.Append("You lost. Type in start if you want to restart the game");
+                        Commands.PrintStatus(heroes, enemies);
+                        Console.WriteLine(currentLog);
+                        started = false;
+                        log.Clear();
+                        continue;
                     }
                 }
-                if(started)
+                if (started)
                 {
                     Commands.PrintStatus(heroes, enemies);
                 }
@@ -592,10 +594,7 @@ namespace GameConsole
                     }
                 case "classes":
                     {
-                        for (int i = 0; i < GameConsole.allHeroes.Count; i++)
-                        {
-                            PrintInfo(GameConsole.allHeroes.ToArray(), GameConsole.allHeroes[i].name.ToLower());
-                        }
+                        PrintClasses();
                         break;
                     }
                 case "status":
@@ -636,22 +635,27 @@ namespace GameConsole
                                     string attackCommand = heroes[i].name + " attack " + commandParts[2];
                                     ExecuteCommand(attackCommand, heroes, enemies);
                                 }
+                                break;
                             }
                             if (commandParts[1].Equals("info") && commandParts.Length == 2) //If the second part is info and the command has 2 parts
                             {
                                 PrintInfo(heroes, commandParts[0]);
+                                break;
                             }
                             else if (commandParts[1].Equals("equip"))
                             {
                                 EquipItem(heroes, commandParts); // Check if the command is an ability command and uses it
+                                break;
                             }
                             else if (commandParts[1].Equals("unequip"))
                             {
                                 UnEquipItem(heroes, commandParts); // Check if the command is an ability command and uses it
+                                break;
                             }
                             else
                             {
                                 TryToUseAbility(heroes, enemies, commandParts); // Check if the command is an ability command and uses it
+                                break;
                             }
                         }
                         catch(Exception)
@@ -660,6 +664,14 @@ namespace GameConsole
                         }
                         break;
                     }
+            }
+        }
+
+        private static void PrintClasses()
+        {
+            for (int i = 0; i < GameConsole.allHeroes.Count; i++)
+            {
+                PrintInfo(GameConsole.allHeroes.ToArray(), GameConsole.allHeroes[i].name.ToLower());
             }
         }
 
@@ -780,6 +792,7 @@ namespace GameConsole
                 if(GameConsole.heroes[currentHeroIndex].health <= 0)
                 {
                     GameConsole.currentLog.Append("Hero is dead. Revive him first \n");
+                    return;
                 }
                 if (GameConsole.heroesActedThisTurn[currentHeroIndex]) // Check if the hero has acted this turn
                 {
@@ -930,6 +943,10 @@ namespace GameConsole
                 try
                 {                
                     string[] command = Console.ReadLine().Split(' ');
+                    if(command[0] == "classes")
+                    {
+                        PrintClasses();
+                    }
                     if (command.Length != 2)
                     {
                         UnrecognizedCommand();

@@ -1,7 +1,13 @@
-3
-Spider: 4
-
-ArmoredWolf: 1
-
-Boar: 1
-
+15
+Spider: 8
+ArmoredWolf: 7
+Boar: 3
+Centaur: 1
+OrcCrusher: 3
+Goblin: 2
+Shaman: 5
+Cyclops: 1
+Sorcerer: 1
+Bandit: 3
+DesertedGuard: 5
+BanditLeader: 1
